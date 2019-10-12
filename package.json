@@ -1,0 +1,32 @@
+{
+  "name": "recipe-maker",
+  "version": "1.0.0",
+  "description": "More practice with React, Redux, Express, and Sequelize!",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run webpack",
+    "webpack": "webpack --watch --mode=development",
+    "start:dev": "DATABASE_URL=yourDBHERE nodemon server/index.js --ignore dist/ --ignore src/ & npm run webpack",
+    "start": "node server.js"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
