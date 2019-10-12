@@ -66,5 +66,8 @@ const User = database.create('user', {
     defaultValue: "https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"
   }
 
-}
-)
+})
+
+User.hasMany(Recipe);
+Recipe.belongsTo(User);
+
