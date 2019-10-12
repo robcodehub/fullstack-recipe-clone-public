@@ -8,7 +8,7 @@ const database = new Sequelize(process.env.DATABASE || 'postgres://localhost/rec
 
 const Recipe = database.define('recipe', {
   id: {
-    type: UUDID,
+    type: UUID
     primaryKey: true,
     defaultValue: UUIDV4
   },
@@ -76,9 +76,9 @@ Recipe.belongsTo(User);
 const syncAndSeed = async() => {
   await database.sync({ force: true })
 
-  const recipes = []
+  const recipes = [{}]
 
-  const users = []
+  const users = [{}]
 }
 
 
