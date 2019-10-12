@@ -71,3 +71,22 @@ const User = database.create('user', {
 User.hasMany(Recipe);
 Recipe.belongsTo(User);
 
+
+
+const syncAndSeed = async() => {
+  await database.sync({ force: true })
+
+  const recipes = []
+
+  const users = []
+}
+
+
+module.exports = {
+  syncAndSeed,
+  models: {
+    Recipe,
+    User
+  }
+
+}
