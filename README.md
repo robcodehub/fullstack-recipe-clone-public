@@ -8,6 +8,9 @@ Make a website for viewing, creating, and saving recipes. Let's get cooking!
 1. Fork and clone this repo
 2. ```npm install```
 4. ```npm run start:dev```
+
+## Deploying Your Application
+Deploying your application is a way to determine whether it will work on an environment other than your own. It's in your best interest to deploy your application to ensure that someone else cloning your repo, will be able to run it. Once you get your application working locally you should deploy it to heroku. As you commit your changes, you should push those changes to both your github repo and to heroku.
  
 ## Requirements
  
@@ -30,7 +33,7 @@ Make a website for viewing, creating, and saving recipes. Let's get cooking!
   - [ ] chefScore - defaults to 0, integer
   - [ ] imageUrl - with a default value
 - [ ] Recipes can be associated with at most one user, users can have many recipes.
-- [ ] There are two methods on the users model that allows us to increase and decrease the user's chefScore
+- [ ] write a method which syncs your database and seeds your data.
 
 - [ ] Write a route to serve up all recipes
 - [ ] Write a route to serve up all users
@@ -44,9 +47,11 @@ Make a website for viewing, creating, and saving recipes. Let's get cooking!
 - [ ] Display the Home component when the url matches `/`
 - [ ] Display the all-recipes component when the url matches `/recipes`
 - [ ] Display the all-users component when the url matches `/users`
-- [ ] Add links to the navbar that can be used to navigate to the recipes view and the users view as well as the home page
+- [ ] Add links to the navbar that can be used to navigate to the recipes view and the users view as well as the home page. The links should show the total number of users and the total number of recipes.
  
  </details>
+ 
+ 
 
 ### Tier 1b 
  
@@ -59,9 +64,10 @@ nothing
 
 #### Frontend
 - [ ] create client side methods which calculate the following (you can put this code in a file called mapppers.js)
-  - [ ] topChef when given a list of recipes and users returns the user who is the top chef (the one with the highest rating)
-  - [ ] healthyRecipes when given a list of recipes calculates which recipes have healthScores between 8 and 10 
+  - [ ] `topChef` when given a list of recipes and users returns the user who is the top chef (the one with the highest rating)
+  - [ ] `healthyRecipes` when given a list of recipes calculates which recipes have healthScores between 8 and 10 
   - [ ] display the information from both of these methods on the home page.
+  - [ ] create a link for chefs. Chefs are users who have a recipe. Clicking on that link should navigate to a /chefs route and display only those users who have recipes.
   </details>
  
 ### Tier 2
