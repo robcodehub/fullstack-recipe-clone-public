@@ -10,11 +10,15 @@ app.get('/', (req, res, next)=> {
 
 
 app.get('/recipes', (req, res, next) => {
-
+  Recipe.findAll()
+  .then(recipes => res.send(recipes))
+  .catch(next);
 });
 
 app.get('/users', (req, res, next) => {
-
+  User.findAll()
+  .then(users => res.send(users))
+  .catch(next)
 });
 
 const port = process.env.PORT || 3000;
