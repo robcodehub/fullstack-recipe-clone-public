@@ -37,3 +37,34 @@ const Recipe = database.define('recipe', {
   }
 });
 
+const User = database.create('user', {
+  id: {
+    type: UUID,
+    primaryKey: true,
+    defaultValue: UUDIV4
+  },
+  username: {
+    type: STRING,
+    notEmpty: true,
+    notNull: true,
+    unique: true
+  },
+  email: {
+    type: STRING,
+    notEmpty: true,
+    notNull: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  chefscore: {
+    type: INTEGER,
+    defaultValue: 0
+  },
+  imageURL: {
+    type: STRING,
+    defaultValue: "https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"
+  }
+
+}
+)
