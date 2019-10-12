@@ -20,7 +20,7 @@ Deploying your application is a way to determine whether it will work on an envi
  
 #### Backend
 
-- [ ] Write a `recipes` model with the following information:
+- [x] Write a `recipes` model with the following information:
   - [ ] name - not empty or null
   - [ ] cuisine - ENUM (restricted to only a handful of values)
   - [ ] directions - extremely large text
