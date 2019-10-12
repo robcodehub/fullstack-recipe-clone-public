@@ -4,7 +4,7 @@
   "description": "More practice with React, Redux, Express, and Sequelize!",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run webpack",
+    "postinstall": "webpack",
     "webpack": "webpack --watch --mode=development",
     "start:dev": "DATABASE_URL=yourDBHERE nodemon server/index.js --ignore dist/ --ignore src/ & npm run webpack",
     "start": "node server.js"
