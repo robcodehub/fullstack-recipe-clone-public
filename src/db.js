@@ -8,7 +8,7 @@ const database = new Sequelize(process.env.DATABASE || 'postgres://localhost/rec
 
 const Recipe = database.define('recipe', {
   id: {
-    type: UUID
+    type: UUID,
     primaryKey: true,
     defaultValue: UUIDV4
   },
