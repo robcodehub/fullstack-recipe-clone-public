@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+
+const { models } = require('./db')
+//const { Recipe, User } = models;
+
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 app.get('/', (req, res, next)=> {
