@@ -86,7 +86,7 @@
     const _Recipes = ({recipes}) => {
       return (
         <div>
-          {recipes.map(recipe => <div> Name: {recipe.name} | Cuisine: {recipe.cuisine} | Health Score: {recipe.healthScore} Directions: {recipe.directions} </div>)}
+          {recipes.map(recipe => <div key = {recipe.id} > Name: {recipe.name} | Cuisine: {recipe.cuisine} | Health Score: {recipe.healthScore} Directions: {recipe.directions} Image: <img src={recipe.imageURL} /></div>)}
         </div>
       )
     }
