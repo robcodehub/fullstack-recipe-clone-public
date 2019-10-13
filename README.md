@@ -39,15 +39,15 @@ Deploying your application is a way to determine whether it will work on an envi
 - [x] Write a route to serve up all users
 
 #### Frontend
-- [ ] Write a recipes sub-reducer to manage recipes in your Redux store
-- [ ] Write a users sub-reducer to manage users in your Redux store
-- [ ] Write a home component which has the text Welcome!
-- [ ] Write a component to display a list of all recipes (include their names, images, and cuisine)
-- [ ] Write a component to display a list of all users (usernames, chefScores, and images)
+- [x] Write a recipes sub-reducer to manage recipes in your Redux store
+- [x] Write a users sub-reducer to manage users in your Redux store
+- [x] Write a home component which has the text Welcome!
+- [x] Write a component to display a list of all recipes (include their names, images, and cuisine)
+- [x] Write a component to display a list of all users (usernames, chefScores, and images)
 - [x] Display the Home component when the url matches `/`
-- [ ] Display the all-recipes component when the url matches `/recipes`
-- [ ] Display the all-users component when the url matches `/users`
-- [ ] Add links to the navbar that can be used to navigate to the recipes view and the users view as well as the home page. The links should show the total number of users and the total number of recipes.
+- [x] Display the all-recipes component when the url matches `/recipes`
+- [x] Display the all-users component when the url matches `/users`
+- [x] Add links to the navbar that can be used to navigate to the recipes view and the users view as well as the home page. The links should show the total number of users and the total number of recipes.
 
  </details>
 
