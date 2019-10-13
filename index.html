@@ -159,6 +159,8 @@
         <div>
           <br />
         There are {healthyFood.length} healthy recipes including {healthyFood.map(food => <p key ={food.name}>{food.name} </p>) }
+        <br />
+        <TopChef />
         </div>
       )
     }
@@ -170,18 +172,29 @@
       }
     })(_HealthyRecipes)
 
-    const _topChef = ({recipes, users}) => {
-      const theTopChef = "";
+    const _TopChef = ({recipes, users}) => {
 
+      let topChef = users;
+      console.log("Top Chef initial check", topChef[0])
+      const theTopChef = users.forEach(user => {
+        if(user.score > topChef.score) {
+          return user
+        }
+      });
+      return (
+        <div>
+          The top Chef is {topChef.name}
+        </div>
+      )
     }
 
 
-    const topChef = connect(({recipes, users}) => {
+    const TopChef = connect(({recipes, users}) => {
       return {
         recipes,
         users
       }
-    })(_topChef)
+    })(_TopChef)
 
 
 
