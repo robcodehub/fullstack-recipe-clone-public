@@ -86,7 +86,7 @@
     const _Recipes = ({recipes}) => {
       return (
         <div>
-          {recipes.length} Recipes coming soon...
+          {recipes.map(recipe => <div> Name: {recipe.name} | Cuisine: {recipe.cuisine} | Health Score: {recipe.healthScore} Directions: {recipe.directions} </div>)}
         </div>
       )
     }
@@ -102,7 +102,7 @@
     const _Users = ({users}) => {
       return (
         <div>
-          {users.length}Users coming soon...
+          {users.length} Users coming soon...
         </div>
       )
     }
@@ -146,8 +146,8 @@
           <HashRouter>
             <Route component = {Nav} />
             <Route path = '/' component = { Home } exact />
-            <Route path = '/api/users' component = { Users } />
-            <Route path = '/api/recipes' component = { Recipes } />
+            <Route path = '/users' component = { Users } />
+            <Route path = '/recipes' component = { Recipes } />
           </HashRouter>
         )
       }
