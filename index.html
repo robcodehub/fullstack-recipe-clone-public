@@ -29,6 +29,27 @@
     const { connect, Provider } = ReactRedux;
 
 
+    const userReducer(state = [], action) => {
+      //ADD IF ACTION.TYPE HERE
+      
+      return state;
+    }
+
+    const recipeReducer(state = [], action) => {
+      //ADD IF ACTION.TYPE HERE
+      return state;
+    }
+
+
+    //REDUX - COMBINE REDUCERS
+    const reducer = combineReducers({
+      users: userReducer,
+      recipes: recipeReducer,
+    });
+
+    //REDUX - CREATE REDUX STORE
+      const store = createStore(reducer);
+
 
     const Home = () => {
     return (
@@ -37,6 +58,31 @@
           </div>
         )
     }
+
+    const Recipes = () => {
+      return (
+        <div>
+          Recipes coming soon...
+        </div>
+      )
+    }
+
+    const Users = () => {
+      return (
+        <div>
+          Users coming soon...
+        </div>
+      )
+    }
+
+    const Nav = () => {
+      return (
+        <div>
+          Users | Recipes
+        </div>
+      )
+    }
+
 
     class App extends Component {
       constructor() {
