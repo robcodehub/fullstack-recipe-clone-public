@@ -20,20 +20,20 @@ Deploying your application is a way to determine whether it will work on an envi
  
 #### Backend
 
-- [ ] Write a `recipes` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] cuisine - ENUM (restricted to only a handful of values)
-  - [ ] directions - extremely large text
-  - [ ] healthScore - decimal between 0 - 10
-  - [ ] ingredients - string
-  - [ ] imageUrl - with a default value
-- [ ] Write a `users` model with the following information:
-  - [ ] username - not empty or null, unique
-  - [ ] email - not empty or null; must be a valid email
-  - [ ] chefScore - defaults to 0, integer
-  - [ ] imageUrl - with a default value
-- [ ] Recipes can be associated with at most one user, users can have many recipes.
-- [ ] write a method which syncs your database and seeds your data.
+- [x] Write a `recipes` model with the following information:
+  - [x] name - not empty or null
+  - [x] cuisine - ENUM (restricted to only a handful of values)
+  - [x] directions - extremely large text
+  - [x] healthScore - decimal between 0 - 10
+  - [x] ingredients - string
+  - [x] imageUrl - with a default value
+- [x] Write a `users` model with the following information:
+  - [x] username - not empty or null, unique
+  - [x] email - not empty or null; must be a valid email
+  - [x] chefScore - defaults to 0, integer
+  - [x] imageUrl - with a default value
+- [x] Recipes can be associated with at most one user, users can have many recipes.
+- [x] write a method which syncs your database and seeds your data.
 
 - [ ] Write a route to serve up all recipes
 - [ ] Write a route to serve up all users
