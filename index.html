@@ -33,7 +33,7 @@
     const SET_USERS = 'SET_USERS'
 
 
-    const userReducer(state = [], action) => {
+    const userReducer = (state = [], action) => {
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_USERS) {
         state = action.users;
@@ -41,7 +41,7 @@
       return state;
     }
 
-    const recipeReducer(state = [], action) => {
+    const recipeReducer = (state = [], action) => {
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_RECIPES) {
         state = action.recipes;
@@ -67,7 +67,7 @@
     const fetchUsers = async() => store.dispatch({type: SET_USERS, users: await (axios.get('/api/users')).data})
 
 
-    const Home = () => {
+    const _Home = ({users, recipes}) => {
     return (
           <div>
             Welcome!
@@ -75,29 +75,58 @@
         )
     }
 
-    const Recipes = () => {
+    //HOME CONNECTED COMPONENT
+    const Home = connect(({users, recipes}) => {
+      return (
+        users,
+        recipes
+      )
+    })(_Home)
+
+    const _Recipes = ({recipes}) => {
       return (
         <div>
-          Recipes coming soon...
+          {recipes.length} Recipes coming soon...
         </div>
       )
     }
 
-    const Users = () => {
+    const Recipes = connect(({recipes}) => {
+      return (
+        recipes
+      )
+    })(_Recipes)
+
+
+
+    const _Users = ({users}) => {
       return (
         <div>
-          Users coming soon...
+          {users.length}Users coming soon...
         </div>
       )
     }
 
-    const Nav = () => {
+    const Users = connect(({users}) => {
+      return (
+        users
+      )
+    })(_Users);
+
+    const _Nav = ({recipes, users}) => {
       return (
         <div>
-          Users | Recipes
+          {users.length} Users | {recipes.length} Recipes
         </div>
       )
     }
+
+    const Nav = connect(({recipes, users}) => {
+      return (
+        recipes,
+        users
+      )
+    })(_Nav)
 
 
     class App extends Component {
@@ -114,7 +143,7 @@
       }
     }
 
-    render(<App />, root)
+    render(<Provider store={store}><App /></Provider>, root)
 
     </script>
   </body>
