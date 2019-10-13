@@ -15,12 +15,9 @@ app.get('/', (req, res, next)=> {
 
 
 app.get('/api/recipes', async (req, res, next) => {
-  console.log("THIS CODE RUNS FOR RECIPES.....")
-  let recipesTest = await Recipe.findAll()
-  console.log(recipesTest)
-  //res.send( Recipe.findAll())
-  //.then(recipes => res.send(recipes))
-  //.catch(next);
+  Recipe.findAll()
+  .then(recipes => res.send(recipes))
+  .catch(next);
 });
 
 app.get('/api/users', (req, res, next) => {
