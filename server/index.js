@@ -14,18 +14,36 @@ app.get('/', (req, res, next)=> {
 });
 
 
+//RECIPE ROUTES
+
 app.get('/api/recipes', async (req, res, next) => {
-  Recipe.findAll()
+  Recipe.findAll({include: [User]})
   .then(recipes => res.send(recipes))
   .catch(next);
 });
 
+app.get('/api/recipes/:recipeId', (req, res, next) => {
+  console.log("THIS CODE RUNS FOR INDIVIDUAL RECIPE");
+  Recipe.findByPk(req.params.id)
+  .then(recipe => res.send(recipe))
+  .catch(next)
+});
+
+//USER ROUTES
 app.get('/api/users', (req, res, next) => {
   console.log("THIS CODE RUNS FOR USERS.....")
   User.findAll()
   .then(users => res.send(users))
   .catch(next)
 });
+
+app.get('/api/users/:userId', (req, res, next) => {
+  console.log("THIS CODE RUNS FOR INDIVIDUAL RECIPE");
+  User.findByPk(req.params.id)
+  .then(user => res.send(user))
+  .catch(next)
+});
+
 
 const port = process.env.PORT || 3000;
 

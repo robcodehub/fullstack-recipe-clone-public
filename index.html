@@ -84,6 +84,7 @@
     return (
           <div>
             Welcome! {users.length} users and {recipes.length} recipes coming soon...
+            <HealthyRecipes />
           </div>
         )
     }
@@ -97,6 +98,9 @@
     })(_Home)
 
     const _Recipes = ({recipes}) => {
+      const chefsTest = recipes.filter(recipe => recipe.user)
+      console.log("RECIPES =======", recipes)
+      console.log("RECIPES WITH CHEF =======", chefsTest)
       return (
         <div>
           {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /></div>)}
@@ -143,6 +147,43 @@
         users
       }
     })(_Nav)
+
+
+
+
+
+    const _HealthyRecipes = ({recipes, users}) => {
+      const healthyFood = recipes.filter(recipe => recipe.healthScore >= 8)
+      console.log("HEALTHY FOOD====", healthyFood)
+      return (
+        <div>
+          <br />
+        There are {healthyFood.length} healthy recipes including {healthyFood.map(food => <p key ={food.name}>{food.name} </p>) }
+        </div>
+      )
+    }
+
+    const HealthyRecipes = connect(({recipes, users}) => {
+      return {
+        recipes,
+        users
+      }
+    })(_HealthyRecipes)
+
+    const _topChef = ({recipes, users}) => {
+      const theTopChef = "";
+
+    }
+
+
+    const topChef = connect(({recipes, users}) => {
+      return {
+        recipes,
+        users
+      }
+    })(_topChef)
+
+
 
 
     class App extends Component {
