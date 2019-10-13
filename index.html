@@ -53,7 +53,7 @@
     //REDUX - COMBINE REDUCERS
     const reducer = combineReducers({
       users: userReducer,
-      recipes: recipeReducer,
+      recipes: recipeReducer
     });
 
     //REDUX - CREATE REDUX STORE
@@ -64,23 +64,23 @@
 
     const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
 
-    const fetchUsers = async() => store.dispatch({type: SET_USERS, users: await (axios.get('/api/users')).data})
+    const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
 
 
     const _Home = ({users, recipes}) => {
     return (
           <div>
-            Welcome!
+            Welcome! {users.length} users and {recipes.length} recipes coming soon...
           </div>
         )
     }
 
     //HOME CONNECTED COMPONENT
     const Home = connect(({users, recipes}) => {
-      return (
+      return {
         users,
         recipes
-      )
+      }
     })(_Home)
 
     const _Recipes = ({recipes}) => {
@@ -92,9 +92,9 @@
     }
 
     const Recipes = connect(({recipes}) => {
-      return (
+      return {
         recipes
-      )
+      }
     })(_Recipes)
 
 
@@ -108,9 +108,9 @@
     }
 
     const Users = connect(({users}) => {
-      return (
+      return {
         users
-      )
+      }
     })(_Users);
 
     const _Nav = ({recipes, users}) => {
@@ -122,16 +122,23 @@
     }
 
     const Nav = connect(({recipes, users}) => {
-      return (
+      return {
         recipes,
         users
-      )
+      }
     })(_Nav)
 
 
     class App extends Component {
       constructor() {
         super()
+        this.state = {
+        }
+      }
+
+      componentDidMount() {
+        fetchRecipes();
+        fetchUsers();
       }
 
       render() {
