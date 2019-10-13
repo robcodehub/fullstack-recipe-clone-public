@@ -44,7 +44,7 @@ Deploying your application is a way to determine whether it will work on an envi
 - [ ] Write a home component which has the text Welcome!
 - [ ] Write a component to display a list of all recipes (include their names, images, and cuisine)
 - [ ] Write a component to display a list of all users (usernames, chefScores, and images)
-- [ ] Display the Home component when the url matches `/`
+- [x] Display the Home component when the url matches `/`
 - [ ] Display the all-recipes component when the url matches `/recipes`
 - [ ] Display the all-users component when the url matches `/users`
 - [ ] Add links to the navbar that can be used to navigate to the recipes view and the users view as well as the home page. The links should show the total number of users and the total number of recipes.
