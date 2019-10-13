@@ -143,9 +143,12 @@
 
       render() {
         return (
-          <div>
-            <Home />
-          </div>
+          <HashRouter>
+            <Route component = {Nav} />
+            <Route path = '/' component = { Home } exact />
+            <Route path = '/api/users' component = { Users } />
+            <Route path = '/api/recipes' component = { Recipes } />
+          </HashRouter>
         )
       }
     }
