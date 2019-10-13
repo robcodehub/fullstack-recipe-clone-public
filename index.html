@@ -86,7 +86,7 @@
     const _Recipes = ({recipes}) => {
       return (
         <div>
-          {recipes.map(recipe => <div key = {recipe.id} > Name: {recipe.name} | Cuisine: {recipe.cuisine} | Health Score: {recipe.healthScore} Directions: {recipe.directions} Image: <img src={recipe.imageURL} /></div>)}
+          {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /></div>)}
         </div>
       )
     }
@@ -103,6 +103,7 @@
       return (
         <div>
           {users.length} Users coming soon...
+          {users.map(user => <div key={user.id}> <br /> Chef Name: {user.username} <br /> Chef Score: {user.chefScore} <br /> Profile Image: <br /> <img height="150" width="150" src={user.imageURL} /> <br /></div>)}
         </div>
       )
     }
