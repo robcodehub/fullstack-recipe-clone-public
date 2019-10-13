@@ -137,6 +137,7 @@
           <Link to='/'> Home </Link>
           <Link to='/users'> Users {users.length} </Link>
           <Link to='/recipes'> Recipes {recipes.length}</Link>
+          <Link to='/chefs'> Chefs </Link>
         </nav>
       )
     }
@@ -149,7 +150,20 @@
     })(_Nav)
 
 
+    const _Chefs = ({recipes, users}) => {
+      return (
+        <div>
+          Chefs coming soon...
+        </div>
+      )
+    }
 
+    const Chefs = connect(({recipes, users}) => {
+      return {
+        recipes,
+        users
+      }
+    })
 
 
     const _HealthyRecipes = ({recipes, users}) => {
@@ -218,6 +232,7 @@
             <Route path = '/' component = { Home } exact />
             <Route path = '/users' component = { Users } />
             <Route path = '/recipes' component = { Recipes } />
+            <Route path = '/chefs' component = { Chefs } />
           </HashRouter>
         )
       }

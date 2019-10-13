@@ -44,6 +44,9 @@ app.get('/api/users/:userId', (req, res, next) => {
   .catch(next)
 });
 
+//CHEF ROUTES - USERS WITH RECIPES
+//app.get('/api/chefs', (req, res, next)
+
 
 const port = process.env.PORT || 3000;
 
