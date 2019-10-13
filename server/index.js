@@ -2,9 +2,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+const db = require('./db');
 
 const { models } = require('./db')
-//const { Recipe, User } = models;
+const { Recipe, User } = models;
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
@@ -13,17 +14,25 @@ app.get('/', (req, res, next)=> {
 });
 
 
-app.get('/recipes', (req, res, next) => {
-  Recipe.findAll()
-  .then(recipes => res.send(recipes))
-  .catch(next);
+app.get('/api/recipes', async (req, res, next) => {
+  console.log("THIS CODE RUNS FOR RECIPES.....")
+  let recipesTest = await Recipe.findAll()
+  console.log(recipesTest)
+  //res.send( Recipe.findAll())
+  //.then(recipes => res.send(recipes))
+  //.catch(next);
 });
 
-app.get('/users', (req, res, next) => {
+app.get('/api/users', (req, res, next) => {
+  console.log("THIS CODE RUNS FOR USERS.....")
   User.findAll()
   .then(users => res.send(users))
   .catch(next)
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, ()=> console.log(`listening on port ${port}`));
+
+db.syncAndSeed()
+.then(() => {
+app.listen(port, ()=> console.log(`listening on port ${port}`))
+});
