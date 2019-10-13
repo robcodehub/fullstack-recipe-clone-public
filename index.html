@@ -28,15 +28,24 @@
     const { createStore, combineReducers } = Redux;
     const { connect, Provider } = ReactRedux;
 
+    //REDUX - ACTION TYPES
+    const SET_RECIPES = 'SET_RECIPES'
+    const SET_USERS = 'SET_USERS'
+
 
     const userReducer(state = [], action) => {
       //ADD IF ACTION.TYPE HERE
-      
+      if (action.type === SET_USERS) {
+        state = action.users;
+      }
       return state;
     }
 
     const recipeReducer(state = [], action) => {
       //ADD IF ACTION.TYPE HERE
+      if (action.type === SET_RECIPES) {
+        state = action.recipes;
+      }
       return state;
     }
 
@@ -49,6 +58,13 @@
 
     //REDUX - CREATE REDUX STORE
       const store = createStore(reducer);
+
+
+    //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
+
+    const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
+
+    const fetchUsers = async() => store.dispatch({type: SET_USERS, users: await (axios.get('/api/users')).data})
 
 
     const Home = () => {
