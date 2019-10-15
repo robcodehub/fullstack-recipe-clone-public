@@ -154,9 +154,12 @@
       const recipesWithChefs = (recipes.filter(recipe => recipe.userId !== null))
       console.log("recipes with chefs=====", recipesWithChefs)
 
+      const allChefs = recipesWithChefs.map(recipe => recipe.user)
+      console.log("chefs=====", allChefs)
+
       return (
         <div>
-          Chefs coming soon...
+          {allChefs.map(chef => <div><p>Chef Name:</p> {chef.username} </div>)}
         </div>
       )
     }
