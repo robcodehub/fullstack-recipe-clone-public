@@ -159,7 +159,7 @@
 
       return (
         <div>
-          {allChefs.map(chef => <div><p>Chef Name:</p> {chef.username} </div>)}
+          {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
         </div>
       )
     }
