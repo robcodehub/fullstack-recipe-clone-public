@@ -4,6 +4,10 @@ const app = express();
 
 const db = require('./db');
 
+const Sequelize = require('sequelize')
+
+const { Op } = Sequelize;
+
 const { models } = require('./db')
 const { Recipe, User } = models;
 
@@ -45,7 +49,11 @@ app.get('/api/users/:userId', (req, res, next) => {
 });
 
 //CHEF ROUTES - USERS WITH RECIPES
-//app.get('/api/chefs', (req, res, next)
+app.get('/api/chefs', (req, res, next) => {
+  Recipe.findAll({include: [User]})
+  .then(recipes => res.send(recipes))
+  .catch(next);
+});
 
 
 const port = process.env.PORT || 3000;

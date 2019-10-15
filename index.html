@@ -149,7 +149,7 @@
       }
     })(_Nav)
 
-
+    //{recipes.filter(recipe => recipe.user)}
     const _Chefs = ({recipes, users}) => {
       return (
         <div>
@@ -163,7 +163,7 @@
         recipes,
         users
       }
-    })
+    })(_Chefs)
 
 
     const _HealthyRecipes = ({recipes, users}) => {
@@ -174,7 +174,7 @@
           <br />
         There are {healthyFood.length} healthy recipes including {healthyFood.map(food => <p key ={food.name}>{food.name} </p>) }
         <br />
-        <TopChef />
+
         </div>
       )
     }
@@ -186,18 +186,36 @@
       }
     })(_HealthyRecipes)
 
+
+    /*
     const _TopChef = ({recipes, users}) => {
 
-      let topChef = users;
+      //create array of objects for users with recipes
+      //let chefUsers = users.filter(user => user.recipe)
+
+     // console.log("users with recipes =====", chefUsers)
+      let topScore = [{chefScore: 0}];
+      for (let i=0; i<users.length; i++) {
+        if (users[i].recipe) {
+          if(users.chefScore > topScore.chefScore) {
+            topScore = users[i];
+          }
+      }
+    }
+    //return topScore;
+
+    /*
+    let topChef = users;
       console.log("Top Chef initial check", topChef[0])
       const theTopChef = users.forEach(user => {
         if(user.score > topChef.score) {
           return user
         }
       });
+
       return (
         <div>
-          The top Chef is {topChef.name}
+          The top Chef is {topScore.name}
         </div>
       )
     }
@@ -210,6 +228,7 @@
       }
     })(_TopChef)
 
+    */
 
 
 
