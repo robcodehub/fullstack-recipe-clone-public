@@ -155,6 +155,9 @@
       const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
 
       console.log("All CHEFS====", allChefs)
+
+
+
       /*
       const reducedChefs = allChefs.reduce((all, chef) => {
         if (!all[chef.id]) {
@@ -174,6 +177,7 @@
       return (
         <div>
           {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
+          <TopChef />
         </div>
       )
     }
@@ -209,26 +213,27 @@
 
 
 
-/*
+
     const _TopChef = ({recipes, users}) => {
 
-      const recipesWithChefs = (recipes.filter(recipe => recipe.userId !== null))
-      console.log("recipes with chefs=====", recipesWithChefs)
+      const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
 
-      const allChefs = recipesWithChefs.map(recipe => recipe.user)
-      console.log("chefs=====", allChefs)
+      console.log("All CHEFS IN TOP CHEF FUNCTION ====", allChefs)
 
-      const topChef =
+      let topChef = allChefs[0];
+
+      for (let i=0; i<allChefs.length; i++) {
+        if(allChefs[i].chefScore > topChef.chefScore) {
+          topChef = allChefs[i];
+        }
+      }
+
+      console.log("TOP CHEF =====", topChef);
+
 
       return (
         <div>
-          {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
-        </div>
-      )
-
-      return (
-        <div>
-          The top Chef is {topScore.name}
+          The top Chef is {topChef.username}
         </div>
       )
     }
@@ -240,7 +245,7 @@
         users
       }
     })(_TopChef)
-*/
+
 
 
 
