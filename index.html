@@ -151,6 +151,9 @@
 
     //{recipes.filter(recipe => recipe.user)}
     const _Chefs = ({recipes, users}) => {
+      const recipesWithChefs = (recipes.filter(recipe => recipe.userId !== null))
+      console.log("recipes with chefs=====", recipesWithChefs)
+
       return (
         <div>
           Chefs coming soon...
