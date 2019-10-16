@@ -205,10 +205,18 @@
 /////////////////////////////
 
 const _OneRecipe = ({recipes, match}) => {
-  console.log("ONE RECIPE =======", match)
+
+  //console.log("ONE RECIPE =======", match)
+
+  //const singleRecipe = recipes.filter(recipe => recipe.id === match.params.id)
+  //console.log("Single Recipe=====", singleRecipe)
+
+  const singleRecipe = recipes.find(recipe => recipe.id === match.params.id);
+  console.log("RECIPE=====", singleRecipe)
   return (
     <div>
-      One recipe coming soon for {match.params.id}.....
+      <h2>Recipe Name: {singleRecipe.name}</h2>
+      <p> Full recipe coming soon...</p>
     </div>
   )
 }
@@ -223,8 +231,11 @@ const OneRecipe = connect(({recipes}) => {
 
 const _OneUser = ({users, match}) => {
   console.log("ONE USER =======", match)
+
+
   return (
     <div>
+      <h2> User Name:</h2>
       Details coming soon for {match.params.id}.....
     </div>
   )
