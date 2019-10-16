@@ -204,7 +204,8 @@
 //SERVES UP ONE RECIPE
 /////////////////////////////
 
-const _OneRecipe = ({recipes}) => {
+const _OneRecipe = ({recipes, match}) => {
+  console.log("ONE RECIPE =======", match.params.id)
   return (
     <div>
       One recipe coming soon.....
