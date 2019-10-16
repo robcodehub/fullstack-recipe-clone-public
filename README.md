@@ -88,9 +88,9 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 - [x] - Clicking on a recipe from the all-recipes view should navigate to show that recipe in the single-recipe view
 
 - [ ] IN PROGRESS - Write a component to display a single user with the following information:
-  - [ ] IN PROGRESS - The student's username, email, image, and chefScore
+  - [x] The student's username, email, image, and chefScore
   - [ ] IN PROGRESS - A list of their recipes (or a helpful message if they don't have any)
-- [ ] IN PROGRESS - Display the appropriate user when the url matches `/users/:userId`
+- [x] Display the appropriate user when the url matches `/users/:userId`
 - [x] - Clicking on a user from the all-users view should navigate to show that user in the single-user view
 
 - [ ] Clicking on the name of a user in the single-recipe view should navigate to show that user in the single-user view

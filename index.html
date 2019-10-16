@@ -255,8 +255,11 @@ const _OneUser = ({users, recipes, match}) => {
 
   return (
     <div>
-      <h2> User Name:</h2>
-      Details coming soon for {singleUser.username}
+      <h2> User Name: {singleUser.username}</h2>
+      <h3>Chef Score: {singleUser.chefscore} </h3>
+      <h3> Email: {singleUser.email} </h3>
+      <h3> Chef Image: </h3>
+      <img src={singleUser.imageURL} height="150" width="150" />
       <h2> Recipes </h2>
       <div>{singleUserRecipes.map(recipe => <div key={recipe.id}> {recipe.name} </div>) } </div>
     </div>
