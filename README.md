@@ -63,6 +63,7 @@ nothing
 
 
 #### Frontend
+NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN TIER 2 AND WILL COME BACK TO THIS SECTION
 - [ ] create client side methods which calculate the following (you can put this code in a file called mapppers.js)
   - [x] `topChef` when given a list of recipes and users returns the user who is the top chef (the one with the highest rating)
   - [x] `healthyRecipes` when given a list of recipes calculates which recipes have healthScores between 8 and 10
@@ -76,14 +77,14 @@ nothing
 
   #### Backend
 
-- [x] - Write a route to serve up a single recipe (based on its id), _including that recipes'_ user
-- [x] - Write a route to serve up a single user (based on their id), _including that user's_ recipes
+- [x] Write a route to serve up a single recipe (based on its id), _including that recipes'_ user
+- [x] Write a route to serve up a single user (based on their id), _including that user's_ recipes
 
 #### Frontend
-- [ ] IN PROGRESS - Write a component to display a single recipe with the following information:
-  - [ ] IN PROGRESS - The recipe's name, image, directions, ingredients, cuisine and healthScore
-  - [ ] IN PROGRESS - The recipe's user and their chefScore
-- [ ] IN PROGRESS - Display the appropriate recipes's info when the url matches `/recipes/:recipeId`
+- [x] Write a component to display a single recipe with the following information:
+  - [x] The recipe's name, image, directions, ingredients, cuisine and healthScore
+  - [x]  The recipe's user and their chefScore
+- [x] Display the appropriate recipes's info when the url matches `/recipes/:recipeId`
 - [x] - Clicking on a recipe from the all-recipes view should navigate to show that recipe in the single-recipe view
 
 - [ ] IN PROGRESS - Write a component to display a single user with the following information:
@@ -94,6 +95,7 @@ nothing
 
 - [ ] Clicking on the name of a user in the single-recipe view should navigate to show that user in the single-user view
 - [ ] Clicking on the name of a recipe in the single-user view should navigate to show that recipe in the single-recipe view
+
   </details>
 
   ### Tier 3

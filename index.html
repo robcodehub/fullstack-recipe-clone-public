@@ -224,8 +224,13 @@ const _OneRecipe = ({recipes, users, match}) => {
   return (
     <div>
       <h2>Recipe Name: {singleRecipe.name}</h2>
+      <h4> Recipe Cuisine: {singleRecipe.cuisine}</h4>
+      <h4>Recipe Health Score: {singleRecipe.healthScore} </h4>
+      <h4>Recipe Ingredients: INGREDIENTS TO BE ADDED TO DB </h4>
+      <h4> Recipe Directions: {singleRecipe.directions}</h4>
+      <h4> Recipe Image:</h4> <img src={singleRecipe.imageURL} height="150" width="150" />
       <h2> Chef Name: {recipeChef.username} </h2>
-      <p> Full recipe coming soon...</p>
+      <h2> Chef Score: {recipeChef.chefscore} </h2>
     </div>
   )
 }
