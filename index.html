@@ -204,7 +204,7 @@
 //SERVES UP ONE RECIPE
 /////////////////////////////
 
-const _OneRecipe = ({recipes, match}) => {
+const _OneRecipe = ({recipes, users, match}) => {
 
   //console.log("ONE RECIPE =======", match)
 
@@ -212,38 +212,56 @@ const _OneRecipe = ({recipes, match}) => {
   //console.log("Single Recipe=====", singleRecipe)
 
   const singleRecipe = recipes.find(recipe => recipe.id === match.params.id);
+
   console.log("RECIPE=====", singleRecipe)
+
+  const recipeChef = users.find(user => user.id === singleRecipe.userId)
+
+
+  console.log("SINGLE RECIPE CHEF=====", recipeChef)
+
+
   return (
     <div>
       <h2>Recipe Name: {singleRecipe.name}</h2>
+      <h2> Chef Name: {recipeChef.username} </h2>
       <p> Full recipe coming soon...</p>
     </div>
   )
 }
 
-const OneRecipe = connect(({recipes}) => {
+const OneRecipe = connect(({recipes, users}) => {
   return {
-    recipes
+    recipes,
+    users
   }
 })(_OneRecipe)
 
 //DISPLAYS ONE USER
 
-const _OneUser = ({users, match}) => {
+const _OneUser = ({users, recipes, match}) => {
   console.log("ONE USER =======", match)
 
+  const singleUser = users.find(user => user.id === match.params.id)
+
+  const singleUserRecipes = recipes.filter(recipe => recipe.userId === singleUser.id)
+
+  console.log("Single User Recipes =====", singleUserRecipes)
 
   return (
     <div>
       <h2> User Name:</h2>
-      Details coming soon for {match.params.id}.....
+      Details coming soon for {singleUser.username}
+      <h2> Recipes </h2>
+      <div>{singleUserRecipes.map(recipe => <div key={recipe.id}> {recipe.name} </div>) } </div>
     </div>
   )
 }
 
-const OneUser = connect(({users}) => {
+const OneUser = connect(({users, recipes}) => {
   return {
-    users
+    users,
+    recipes
   }
 })(_OneUser)
 
