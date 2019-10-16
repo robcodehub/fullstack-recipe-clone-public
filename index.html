@@ -82,11 +82,14 @@
 
     const _Home = ({users, recipes}) => {
       console.log("RECIPES ON HOME PAGE SHOW...", recipes)
+      let allRecipes = [];
+      recipes
+
+
     return (
           <div>
             Welcome! {users.length} users and {recipes.length} recipes coming soon...
 
-            
             <HealthyRecipes />
             The top chef is...
           </div>
@@ -107,7 +110,7 @@
       console.log("RECIPES WITH CHEF =======", chefsTest)
       return (
         <div>
-          {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /></div>)}
+          {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <Link to={`/recipes/${recipe.id}`}>Link to Recipe</Link> </div>)}
         </div>
       )
     }
@@ -142,6 +145,7 @@
           <Link to='/users'> Users ({users.length}) </Link>
           <Link to='/recipes'> Recipes ({recipes.length})</Link>
           <Link to='/chefs'> Chefs ({(recipes.filter(recipe => recipe.userId !== null)).length})</Link>
+
         </nav>
       )
     }
@@ -152,6 +156,9 @@
         users
       }
     })(_Nav)
+
+
+
 
     //{recipes.filter(recipe => recipe.user)}
     const _Chefs = ({recipes, users}) => {
@@ -192,6 +199,28 @@
         users
       }
     })(_Chefs)
+
+
+//SERVES UP ONE RECIPE
+/////////////////////////////
+
+const _OneRecipe = ({recipes}) => {
+  return (
+    <div>
+      One recipe coming soon.....
+    </div>
+  )
+}
+
+const OneRecipe = connect(({recipes}) => {
+  return {
+    recipes
+  }
+})(_OneRecipe)
+
+
+
+
 
 //==================CHANGES TO MAKE===============================================
 //SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
@@ -289,6 +318,10 @@ const calcTopChef = (recipes) => {
 
 
 
+
+
+
+
     class App extends Component {
       constructor() {
         super()
@@ -309,6 +342,7 @@ const calcTopChef = (recipes) => {
             <Route path = '/users' component = { Users } />
             <Route path = '/recipes' component = { Recipes } />
             <Route path = '/chefs' component = { Chefs } />
+            <Route path = '/recipes/:id' component = { OneRecipe } />
           </HashRouter>
         )
       }
