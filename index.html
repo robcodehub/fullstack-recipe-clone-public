@@ -127,7 +127,7 @@
       return (
         <div>
           {users.length} Users coming soon...
-          {users.map(user => <div key={user.id}> <br /> Chef Name: {user.username} <br /> Chef Score: {user.chefScore} <br /> Profile Image: <br /> <img height="150" width="150" src={user.imageURL} /> <br /></div>)}
+          {users.map(user => <div key={user.id}> <br /> Chef Name: {user.username} <br /> Chef Score: {user.chefScore} <br /> Profile Image: <br /> <img height="150" width="150" src={user.imageURL} /> <Link to={`/users/${user.id}`}> Link to User</Link> <br /></div>)}
         </div>
       )
     }
@@ -205,10 +205,10 @@
 /////////////////////////////
 
 const _OneRecipe = ({recipes, match}) => {
-  console.log("ONE RECIPE =======", match.params.id)
+  console.log("ONE RECIPE =======", match)
   return (
     <div>
-      One recipe coming soon.....
+      One recipe coming soon for {match.params.id}.....
     </div>
   )
 }
@@ -219,9 +219,22 @@ const OneRecipe = connect(({recipes}) => {
   }
 })(_OneRecipe)
 
+//DISPLAYS ONE USER
 
+const _OneUser = ({users, match}) => {
+  console.log("ONE USER =======", match)
+  return (
+    <div>
+      Details coming soon for {match.params.id}.....
+    </div>
+  )
+}
 
-
+const OneUser = connect(({users}) => {
+  return {
+    users
+  }
+})(_OneUser)
 
 //==================CHANGES TO MAKE===============================================
 //SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
@@ -344,6 +357,7 @@ const calcTopChef = (recipes) => {
             <Route path = '/recipes' component = { Recipes } exact />
             <Route path = '/chefs' component = { Chefs } exact />
             <Route path = '/recipes/:id' component = { OneRecipe } />
+            <Route path = '/users/:id' component = { OneUser } />
           </HashRouter>
         )
       }
