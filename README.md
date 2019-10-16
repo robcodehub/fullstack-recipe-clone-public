@@ -76,21 +76,21 @@ nothing
 
   #### Backend
 
-- [ ] Write a route to serve up a single recipe (based on its id), _including that recipes'_ user
-- [ ] Write a route to serve up a single user (based on their id), _including that user's_ recipes
+- [ ] IN PROGRESS - Write a route to serve up a single recipe (based on its id), _including that recipes'_ user
+- [ ] IN PROGRESS - Write a route to serve up a single user (based on their id), _including that user's_ recipes
 
 #### Frontend
-- [ ] Write a component to display a single recipe with the following information:
-  - [ ] The recipe's name, image, directions, ingredients, cuisine and healthScore
-  - [ ] The recipe's user and their chefScore
-- [ ] Display the appropriate recipes's info when the url matches `/recipes/:recipeId`
-- [ ] Clicking on a recipe from the all-recipes view should navigate to show that recipe in the single-recipe view
+- [ ] IN PROGRESS - Write a component to display a single recipe with the following information:
+  - [ ] IN PROGRESS - The recipe's name, image, directions, ingredients, cuisine and healthScore
+  - [ ] IN PROGRESS - The recipe's user and their chefScore
+- [ ] IN PROGRESS - Display the appropriate recipes's info when the url matches `/recipes/:recipeId`
+- [ ] IN PROGRESS - Clicking on a recipe from the all-recipes view should navigate to show that recipe in the single-recipe view
 
-- [ ] Write a component to display a single user with the following information:
-  - [ ] The student's username, email, image, and chefScore
-  - [ ] A list of their recipes (or a helpful message if they don't have any)
-- [ ] Display the appropriate user when the url matches `/users/:userId`
-- [ ] Clicking on a user from the all-users view should navigate to show that user in the single-user view
+- [ ] IN PROGRESS - Write a component to display a single user with the following information:
+  - [ ] IN PROGRESS - The student's username, email, image, and chefScore
+  - [ ] IN PROGRESS - A list of their recipes (or a helpful message if they don't have any)
+- [ ] IN PROGRESS - Display the appropriate user when the url matches `/users/:userId`
+- [ ] IN PROGRESS - Clicking on a user from the all-users view should navigate to show that user in the single-user view
 
 - [ ] Clicking on the name of a user in the single-recipe view should navigate to show that user in the single-user view
 - [ ] Clicking on the name of a recipe in the single-user view should navigate to show that recipe in the single-recipe view
