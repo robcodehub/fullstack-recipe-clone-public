@@ -253,6 +253,8 @@ const _OneUser = ({users, recipes, match}) => {
 
   console.log("Single User Recipes =====", singleUserRecipes)
 
+  console.log("LENGTH CHECK=====", singleUserRecipes.length)
+
   return (
     <div>
       <h2> User Name: {singleUser.username}</h2>
@@ -261,7 +263,7 @@ const _OneUser = ({users, recipes, match}) => {
       <h3> Chef Image: </h3>
       <img src={singleUser.imageURL} height="150" width="150" />
       <h2> Recipes </h2>
-      <div>{singleUserRecipes.map(recipe => <div key={recipe.id}> {recipe.name} </div>) } </div>
+      <div>{singleUserRecipes.length > 0 ? singleUserRecipes.map(recipe => <div key={recipe.id}> {recipe.name} </div>) : <div> There are no recipes for this user </div> } </div>
     </div>
   )
 }
