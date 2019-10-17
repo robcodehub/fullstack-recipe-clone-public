@@ -229,7 +229,7 @@ const _OneRecipe = ({recipes, users, match}) => {
       <h4>Recipe Ingredients: INGREDIENTS TO BE ADDED TO DB </h4>
       <h4> Recipe Directions: {singleRecipe.directions}</h4>
       <h4> Recipe Image:</h4> <img src={singleRecipe.imageURL} height="150" width="150" />
-      <h2> Chef Name: {recipeChef.username} </h2>
+      <h2> Chef Name: <Link to={`/users/${recipeChef.id}`}> {recipeChef.username}</Link> </h2>
       <h2> Chef Score: {recipeChef.chefscore} </h2>
     </div>
   )

@@ -93,7 +93,7 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 - [x] Display the appropriate user when the url matches `/users/:userId`
 - [x] - Clicking on a user from the all-users view should navigate to show that user in the single-user view
 
-- [ ] IN PROGRESS - Clicking on the name of a user in the single-recipe view should navigate to show that user in the single-user view
+- [x] Clicking on the name of a user in the single-recipe view should navigate to show that user in the single-user view
 - [ ] IN PROGRESS - Clicking on the name of a recipe in the single-user view should navigate to show that recipe in the single-recipe view
 
   </details>
