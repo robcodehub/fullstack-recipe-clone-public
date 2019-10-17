@@ -263,7 +263,7 @@ const _OneUser = ({users, recipes, match}) => {
       <h3> Chef Image: </h3>
       <img src={singleUser.imageURL} height="150" width="150" />
       <h2> Recipes </h2>
-      <div>{singleUserRecipes.length > 0 ? singleUserRecipes.map(recipe => <div key={recipe.id}> {recipe.name} </div>) : <div> There are no recipes for this user </div> } </div>
+      <div>{singleUserRecipes.length > 0 ? singleUserRecipes.map(recipe => <div key={recipe.id}> <Link to={`/recipes/${recipe.id}`}>{recipe.name} </Link> </div>) : <div> There are no recipes for this user </div> } </div>
     </div>
   )
 }
