@@ -44,6 +44,7 @@
     //REDUX - ACTION TYPES
     const SET_RECIPES = 'SET_RECIPES'
     const SET_USERS = 'SET_USERS'
+    const ADD_RECIPE = 'ADD_RECIPE'
 
 
     const userReducer = (state = [], action) => {
@@ -58,6 +59,8 @@
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_RECIPES) {
         state = action.recipes;
+      } else if (action.type === ADD_RECIPE) {
+        return [...state, action.recipe]
       }
       return state;
     }
@@ -78,6 +81,8 @@
     const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
 
     const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
+
+    const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data}
 
 
     const _Home = ({users, recipes}) => {
@@ -373,6 +378,21 @@ const calcTopChef = (recipes) => {
 
 
 
+//====================WRITE A ROUTE TO ADD A NEW RECIPE===========================
+//================================ADD RECIPE======================================
+//================================================================================
+
+
+
+
+
+
+//====================WRITE A ROUTE TO ADD A NEW USER===========================
+//================================ADD RECIPE======================================
+//================================================================================
+
+
+
 
 
     class App extends Component {
@@ -397,6 +417,8 @@ const calcTopChef = (recipes) => {
             <Route path = '/chefs' component = { Chefs } exact />
             <Route path = '/recipes/:id' component = { OneRecipe } />
             <Route path = '/users/:id' component = { OneUser } />
+            <Route path = '/addrecipe' component = { AddRecipe } />
+            <Route path = '/adduser' component = { AddUser } />
           </HashRouter>
         )
       }
