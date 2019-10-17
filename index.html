@@ -22,6 +22,24 @@
         display: flex;
         justify-content: space-around;
       }
+
+      #new-recipe-form {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        padding: 1rem;
+      }
+
+      #new-recipe-form > input{
+        margin: 0.2rem;
+        padding: 0.2rem;
+      }
+
+      #new-recipe-form > select{
+        margin: 0.2rem;
+        padding: 0.2rem;
+      }
+
     </style>
 
   </head>
@@ -116,6 +134,8 @@
       return (
         <div>
           {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Ingredients: {recipe.ingredients} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <Link to={`/recipes/${recipe.id}`}>Link to Recipe</Link> </div>)}
+          <br /> <br />
+          <AddNewRecipeForm />
         </div>
       )
     }
@@ -402,19 +422,43 @@ const AddRecipe = connect(({recipes, users}) => {
 
 //CREATING THE ADD NEW RECIPE AS A CLASS
 
-class _AddNewRecipe extends Component {
+class _AddNewRecipeForm extends Component {
   constructor() {
     super();
 
   this.state = {
-
+    name: "",
+    cuisine: "",
+    healthScore: "",
+    ingredients: "",
+    directions: "",
+    imageURL: ""
     }
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  submitForm(ev) {
+    ev.preventDefault()
+
   }
 
   render() {
+    const { name, cuisine, healthScore, ingredients, directions, imageURL } = this.state;
+    const {submitForm} = this;
     return (
       <div>
-      Add New Recipe Form coming soon...
+          Add New Recipe Form coming soon...
+        <form id="new-recipe-form" onSubmit={submitForm}>
+          Recipe Name: <input type="text" />
+          Cuisine: <select> </select>
+          Health Score: <select> </select>
+          Ingredients: <input type="text" />
+          Directions: <input type="text" />
+          Link to Image (Image URL): <input type="text" />
+
+          <button type="submit"> Add New Recipe </button>
+        </form>
+
       </div>
     )
 
@@ -422,9 +466,17 @@ class _AddNewRecipe extends Component {
 
 }
 
-const AddNewRecipe = connect(({recipes,users}) => {
-
-})
+const AddNewRecipeForm = connect(({recipes,users}) => {
+  return {
+    users,
+    recipes
+  }
+  /*, (dispatch) => {
+  return {
+    addRecipe: (recipe) => dispatch (addRecipe(recipe))
+  }
+  }*/
+})(_AddNewRecipeForm)
 
 
 
