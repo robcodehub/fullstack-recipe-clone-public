@@ -28,6 +28,10 @@ const Recipe = database.define('recipe', {
       max: 10
     }
   },
+  ingredients: {
+    type: TEXT,
+    defaultValue: "salt, sugar, baking powder"
+  },
   directions: {
     type: TEXT
   },
@@ -87,9 +91,9 @@ const [chef1, chef2, chef3 ] = await Promise.all(users.map(user => User.create(u
 
 
 const recipes = [
-  {name: 'banana cake', cuisine: 'desert', healthScore: 3, directions: "add bananas, bake cake", userId: chef1.id},
+  {name: 'banana cake', cuisine: 'desert', healthScore: 3, ingredients: "bananas", directions: "add bananas, bake cake", userId: chef1.id},
 
-  {name: 'chocolate cake', cuisine: 'desert', healthScore: 1, directions: "add chocolate, bake cake", userId: chef2.id},
+  {name: 'chocolate cake', cuisine: 'desert', healthScore: 1, ingredients: "chocolate", directions: "add chocolate, bake cake", userId: chef2.id},
 
   {name: 'pizza', cuisine: 'italian', healthScore: 8, directions: "add toppings, cook pizza", userId: chef2.id},
 

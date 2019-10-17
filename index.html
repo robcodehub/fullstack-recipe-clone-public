@@ -82,7 +82,7 @@
 
     const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
 
-    const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data}
+    const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
 
 
     const _Home = ({users, recipes}) => {
@@ -115,7 +115,7 @@
       console.log("RECIPES WITH CHEF =======", chefsTest)
       return (
         <div>
-          {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <Link to={`/recipes/${recipe.id}`}>Link to Recipe</Link> </div>)}
+          {recipes.map(recipe => <div key = {recipe.id} > <br /> Name: {recipe.name} <br /> Cuisine: {recipe.cuisine} <br /> Health Score: {recipe.healthScore} <br /> Ingredients: {recipe.ingredients} <br /> Directions: {recipe.directions} <br /> Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <Link to={`/recipes/${recipe.id}`}>Link to Recipe</Link> </div>)}
         </div>
       )
     }
@@ -231,7 +231,7 @@ const _OneRecipe = ({recipes, users, match}) => {
       <h2>Recipe Name: {singleRecipe.name}</h2>
       <h4> Recipe Cuisine: {singleRecipe.cuisine}</h4>
       <h4>Recipe Health Score: {singleRecipe.healthScore} </h4>
-      <h4>Recipe Ingredients: INGREDIENTS TO BE ADDED TO DB </h4>
+      <h4>Recipe Ingredients: {singleRecipe.ingredients} </h4>
       <h4> Recipe Directions: {singleRecipe.directions}</h4>
       <h4> Recipe Image:</h4> <img src={singleRecipe.imageURL} height="150" width="150" />
       <h2> Chef Name: <Link to={`/users/${recipeChef.id}`}> {recipeChef.username}</Link> </h2>
@@ -378,12 +378,53 @@ const calcTopChef = (recipes) => {
 
 
 
+
+
+
 //====================WRITE A ROUTE TO ADD A NEW RECIPE===========================
 //================================ADD RECIPE======================================
 //================================================================================
 
 
+const _AddRecipe = () => {
 
+}
+
+
+const AddRecipe = connect(({recipes, users}) => {
+  return {
+    users,
+    recipes
+  }
+})(_AddRecipe)
+
+
+
+//CREATING THE ADD NEW RECIPE AS A CLASS
+
+class _AddNewRecipe extends Component {
+  constructor() {
+    super();
+
+  this.state = {
+
+    }
+  }
+
+  render() {
+    return (
+      <div>
+      Add New Recipe Form coming soon...
+      </div>
+    )
+
+  }
+
+}
+
+const AddNewRecipe = connect(({recipes,users}) => {
+
+})
 
 
 
@@ -391,7 +432,16 @@ const calcTopChef = (recipes) => {
 //================================ADD RECIPE======================================
 //================================================================================
 
+const _AddUser = () => {
 
+}
+
+const AddUser = connect(({users, recipes}) => {
+  return {
+    users,
+    recipes
+  }
+})(_AddUser)
 
 
 
