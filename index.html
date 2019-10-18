@@ -60,38 +60,55 @@
     const { thunkMiddleware, thunk, createThunkMiddleware } = ReduxThunk;
     const { connect, Provider } = ReactRedux;
 
-    //REDUX - ACTION TYPES
+
+    ////////////////////CURRENT CODE BEFORE REFACTORING TO REDUX THUNKS///////////////////////////////////////
+        //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
+
+        const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
+
+        const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
+
+        const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
+
+    //////////////////////////////////////////////////////////////////////////
+    /////////////////////////REDUX - ACTION TYPES/////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////RECIPE - ACTION TYPES/////////////////////////////
     const SET_RECIPES = 'SET_RECIPES'
     const ADD_RECIPE = 'ADD_RECIPE'
     const DELETE_RECIPE = 'DELETE_RECIPE'
 
+    /////////////////////////USER - ACTION TYPES/////////////////////////////
     const SET_USERS = 'SET_USERS'
     const ADD_USER = 'ADD_USER'
     const DELETE_USER = 'DELETE_USER'
 
 
 
+    /////////////////////////////////////////////////////////////////////////////
+    ////////////////////////REDUX - ACTION CREATORS//////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
 
-    //REDUX - ACTION CREATORS
-
+    /////////////////////////RECIPE ACTION CREATORS/////////////////////////////
     const setRecipesAction = (recipes) => ({type: SET_RECIPES, recipes})
     const addRecipeAction = (recipe) => ({type: ADD_RECIPE, recipe})
 
+
+     /////////////////////////USER ACTION CREATORS/////////////////////////////
     const setUsersAction = (users) => ({type: SET_USERS, users})
     const addUserAction = (recipe) => ({type: ADD_USER, user})
 
-    //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
-
-    const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
-
-    const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
 
 
 
 
-    //REFACTORING WITH THUNKS
+    /////////////////////////////////////////////////////////////////////////////
+    ////////////////////////     REDUX - THUNKS    //////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
 
-    //RECIPE THUNKS
+
+    ////////////////////////     RECIPE - THUNKS    //////////////////////////////
 
     const setRecipesThunk = () => {
       return async dispatch => {
@@ -108,7 +125,7 @@
     }
 
 
-    //USER THUNKS
+   ////////////////////////     USER - THUNKS    //////////////////////////////
 
     const setUsersThunk = () => {
       return async dispatch => {
@@ -125,9 +142,11 @@
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////
+    ////////////////////////     REDUX - REDUCERS    ////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
 
-
-    //REDUX - REDUCERS
+    ////////////////////////   REDUX - USER REDUCER    ///////////////////////////
     const userReducer = (state = [], action) => {
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_USERS) {
@@ -140,6 +159,7 @@
       return state;
     }
 
+    ////////////////////////   REDUX - RECIPE REDUCER    ///////////////////////////
     const recipeReducer = (state = [], action) => {
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_RECIPES) {
@@ -153,13 +173,15 @@
     }
 
 
-    //REDUX - COMBINE REDUCERS
+    ////////////////////////   REDUX - COMBINE REDUCERS    ///////////////////////////
     const reducer = combineReducers({
       users: userReducer,
       recipes: recipeReducer
     });
 
-    //REDUX - CREATE REDUX STORE
+    /////////////////////////////////////////////////////////////////////////////
+    ////////////////////////  REDUX - CREATE STORE  ////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
       const store = createStore(reducer) //, applyMiddleware(thunkMiddleware));
 
       //REDUX STORE WITH MIDDLEWARE
@@ -558,11 +580,23 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
     recipes,
     users
   }
+})(_AddNewRecipeForm)
+
+
+//THE BELOW HAS BEEN COMMENTED OUT UNTIL THIS IS CONVERTED TO REDUX THUNKS
+/*
+/*
+const AddNewRecipeForm = connect(({recipes,users}) => {
+  return {
+    recipes,
+    users
+  }
 }, (dispatch) => {
   return {
     createNewRecipe: (recipe) => dispatch(addRecipeThunk(recipe))
     }
-  })(_AddNewRecipeForm)
+})(_AddNewRecipeForm)
+*/
 
 
 
