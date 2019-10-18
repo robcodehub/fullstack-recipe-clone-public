@@ -26,15 +26,7 @@ app.get('/api/recipes', async (req, res, next) => {
   .catch(next);
 });
 
-//REPLACE THE BELOW WITH A HASH ROUTE IN REACT
-/*
-app.get('/api/recipes/:recipeId', (req, res, next) => {
-  console.log("THIS CODE RUNS FOR INDIVIDUAL RECIPE");
-  Recipe.findByPk(req.params.id)
-  .then(recipe => res.send(recipe))
-  .catch(next)
-});
-*/
+
 
 //USER ROUTES
 app.get('/api/users', (req, res, next) => {
@@ -44,13 +36,7 @@ app.get('/api/users', (req, res, next) => {
   .catch(next)
 });
 
-//REPLACE THE BELOW WITH A HASH ROUTE IN REACT
-app.get('/api/users/:userId', (req, res, next) => {
-  console.log("THIS CODE RUNS FOR INDIVIDUAL USER");
-  User.findByPk(req.params.id)
-  .then(user => res.send(user))
-  .catch(next)
-});
+
 
 //CHEF ROUTES - USERS WITH RECIPES
 
@@ -61,7 +47,10 @@ app.get('/api/chefs', (req, res, next) => {
   .catch(next);
 });
 
-// END CODE TO BE PLACED BY REACT HASH ROUTE
+
+
+
+
 
 
 const port = process.env.PORT || 3000;

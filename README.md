@@ -109,9 +109,9 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
 #### Frontend
 
-- [ ] IN PROGRESS - Write a component to display a form for adding a new recipe that contains inputs for all recipe information (including associated user. Note that cuisine should be a dropdown of options).
-- [ ] IN PROGRESS - Display this component EITHER as part of the all-recipes view, or as its own view
-- [ ] Submitting the form with a valid name should:
+- [x] Write a component to display a form for adding a new recipe that contains inputs for all recipe information (including associated user. Note that cuisine should be a dropdown of options).
+- [x] Display this component EITHER as part of the all-recipes view, or as its own view
+- [ ] IN PROGRESS - ubmitting the form with a valid name should:
   - [ ] IN PROGRESS - Make an AJAX request that causes the new recipe to be persisted in the database
   - [ ] IN PROGRESS - Add the new recipe to the list of recipes without needing to refresh the page
 
