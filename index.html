@@ -514,12 +514,12 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
     recipes,
     users
-  }, (dispatch) => {
+  }
+}, (dispatch) => {
   return {
     createNewRecipe: (recipe) => dispatch(addRecipeThunk(recipe))
     }
-  }
-})(_AddNewRecipeForm)
+  })(_AddNewRecipeForm)
 
 
 
