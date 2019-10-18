@@ -10,7 +10,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.1.1/react-redux.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.0.1/react-router-dom.js'></script>
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.js'></script>
 
     <style>
 
@@ -56,7 +56,8 @@
     const { Component } = React;
     const { render } = ReactDOM;
     const { HashRouter, Link, Route} = ReactRouterDOM;
-    const { createStore, combineReducers } = Redux;
+    const { createStore, combineReducers, applyMiddleWare } = Redux;
+    const { createThunkMiddleware, thunkMiddleware } = ReduxThunk;
     const { connect, Provider } = ReactRedux;
 
     //REDUX - ACTION TYPES
