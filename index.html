@@ -68,13 +68,24 @@
 
     //REDUX - ACTION CREATORS
 
+    const addRecipeAction = (recipe) => ({type: ADD_RECIPE, recipe})
+
+
+
     //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
 
     const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
 
     const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
 
-    const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
+
+    //REFACTORING WITH THUNKS
+    const addRecipeThunk = (recipe) => {
+    return async (dispatch) => {
+        const postRecipe = (await axios.post('/api/recipes', recipe)).data;
+        dispatch(addRecipeAction(postRecipe))
+        }
+    }
 
 
     //REDUX - REDUCERS
@@ -89,11 +100,11 @@
     const recipeReducer = (state = [], action) => {
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_RECIPES) {
-        state = action.recipes;
+          state = action.recipes;
       } else if (action.type === ADD_RECIPE) {
-        return [...state, action.recipe]
+          return [...state, action.recipe]
       } else if (action.type === DELETE_RECIPE) {
-        return state.recipes.filter(recipe => recipe.id !== action.recipe.id)
+          return state.recipes.filter(recipe => recipe.id !== action.recipe.id)
       }
 
 
@@ -113,7 +124,7 @@
 
 
 
-
+//////////////////////HOME CONNECTED COMPONENT////////////////////////////////////
     const _Home = ({users, recipes}) => {
       console.log("RECIPES ON HOME PAGE SHOW...", recipes)
       let allRecipes = [];
@@ -138,6 +149,9 @@
       }
     })(_Home)
 
+
+
+//////////////////////RECIPE CONNECTED COMPONENT////////////////////////////////////
     const _Recipes = ({recipes}) => {
       const chefsTest = recipes.filter(recipe => recipe.user)
       console.log("RECIPES =======", recipes)
@@ -151,6 +165,7 @@
       )
     }
 
+    //RECIPE CONNECTED COMPONENT
     const Recipes = connect(({recipes}) => {
       return {
         recipes
@@ -158,7 +173,7 @@
     })(_Recipes)
 
 
-
+//////////////////////USERS CONNECTED COMPONENT////////////////////////////////////
     const _Users = ({users}) => {
       return (
         <div>
@@ -168,12 +183,15 @@
       )
     }
 
+    //USERS CONNECTED COMPONENT
     const Users = connect(({users}) => {
       return {
         users
       }
     })(_Users);
 
+
+  //////////////////////NAV CONNECTED COMPONENT////////////////////////////////////
     const _Nav = ({recipes, users}) => {
       return (
         <nav>
@@ -186,6 +204,7 @@
       )
     }
 
+    //NAV CONNECTED COMPONENT
     const Nav = connect(({recipes, users}) => {
       return {
         recipes,
@@ -195,7 +214,7 @@
 
 
 
-
+  //////////////////////CHEFS CONNECTED COMPONENT////////////////////////////////////
     //{recipes.filter(recipe => recipe.user)}
     const _Chefs = ({recipes, users}) => {
 
@@ -237,8 +256,8 @@
     })(_Chefs)
 
 
-//SERVES UP ONE RECIPE
-/////////////////////////////
+//////////////////////////////ONE RECIPE CONNECTED COMPONENT//////////////////////////////////
+/////////////////////////SERVES UP ONE RECIPE BASED ON RECIPE ID/////////////////////////////
 
 const _OneRecipe = ({recipes, users, match}) => {
 
@@ -278,7 +297,9 @@ const OneRecipe = connect(({recipes, users}) => {
   }
 })(_OneRecipe)
 
-//DISPLAYS ONE USER
+
+////////////////////////////ONE USER CONNECTED COMPONENT////////////////////////////////////
+/////////////////////////SERVES UP ONE USER BASED ON USER ID///////////////////////////////
 
 const _OneUser = ({users, recipes, match}) => {
   console.log("ONE USER =======", match)
@@ -310,6 +331,10 @@ const OneUser = connect(({users, recipes}) => {
     recipes
   }
 })(_OneUser)
+
+
+////////////////////////////HEALTHY RECIPES CONNECTED COMPONENT////////////////////////////////////
+/////////////////////////RETURNS RECIPES WITH HEALTH SCORE ABOVE 8///////////////////////////////
 
 //==================CHANGES TO MAKE===============================================
 //SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
@@ -346,6 +371,9 @@ const OneUser = connect(({users, recipes}) => {
 //SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
 //==================CHANGES TO MAKE===============================================
 
+
+////////////////////////////TOP CHEF CONNECTED COMPONENT////////////////////////////////////
+/////////////////////////RETURNS THE CHEF WITH THE HIGHEST RATING///////////////////////////
 
 //==================CHANGES TO MAKE===============================================
 //SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
@@ -408,8 +436,9 @@ const calcTopChef = (recipes) => {
 
 
 
-
-
+//////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////ADD NEW RECIPE SECTION////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 
 //====================WRITE A ROUTE TO ADD A NEW RECIPE===========================
@@ -445,28 +474,31 @@ class _AddNewRecipeForm extends Component {
     directions: "",
     imageURL: ""
     }
-    this.submitForm = this.submitForm.bind(this);
+    this.createNewRecipe = this.createNewRecipe.bind(this);
   }
 
-  submitForm(ev) {
+  async createNewRecipe(ev) {
     ev.preventDefault()
-
+    await this.props.createNewRecipe(this.state);
   }
+
 
   render() {
     const { name, cuisine, healthScore, ingredients, directions, imageURL } = this.state;
-    const {submitForm} = this;
-    const healthScores = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0]
+    const {createNewRecipe} = this;
+    const cuisinesSelect = ['desert', 'italian']
+
+    const healthScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
     return (
       <div>
           Add New Recipe Form coming soon...
-        <form id="new-recipe-form" onSubmit={submitForm}>
-          Recipe Name: <input type="text" />
-          Cuisine: <select> </select>
+        <form id="new-recipe-form" onSubmit={createNewRecipe}>
+          Recipe Name: <input type="text" name="name" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
+          Cuisine: <select> {cuisinesSelect.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>
           Health Score: <select> {healthScores.map(score => <option key={score} value={score}>{score}</option>)} </select>
-          Ingredients: <input type="text" />
-          Directions: <input type="text" />
-          Link to Image (Image URL): <input type="text" />
+          Ingredients: <input name="ingredients" type="text" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
+          Directions: <input type="text" name="directions" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
+          Link to Image (Image URL): <input type="text" name="imageURL" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
 
           <button type="submit"> Add New Recipe </button>
         </form>
@@ -480,14 +512,13 @@ class _AddNewRecipeForm extends Component {
 
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
-    users,
-    recipes
-  }
-  /*, (dispatch) => {
+    recipes,
+    users
+  }, (dispatch) => {
   return {
-    addRecipe: (recipe) => dispatch (addRecipe(recipe))
+    createNewRecipe: (recipe) => dispatch(addRecipeThunk(recipe))
+    }
   }
-  }*/
 })(_AddNewRecipeForm)
 
 
