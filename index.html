@@ -574,13 +574,14 @@ class _AddNewRecipeForm extends Component {
 
   async createNewRecipe(ev) {
     ev.preventDefault()
-    await this.props.createNewRecipe(this.state);
+     await this.props.createNewRecipe(this.state);
   }
 
 
   render() {
+    console.log("PROPS IN RENDER======", this.props)
     const { name, cuisine, healthScore, ingredients, directions, imageURL } = this.state;
-    const {createNewRecipe} = this;
+    const { createNewRecipe } = this;
     const cuisinesSelect = ['desert', 'italian']
 
     const healthScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
@@ -613,6 +614,29 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
 })(_AddNewRecipeForm)
 
 
+//CONNECTED ADD NEW RECIPE FORM TO ACTION CREATOR
+
+//MAPSTATETOPROPS - NOT REQUIRED??? - ALREADY FACTORED INTO CONNECT
+const mapStateToProps = (state) => {
+  return {
+    recipes,
+    users
+  }
+}
+
+
+/*
+
+const AddNewRecipeForm = connect(({recipes,users}) => {
+  return {
+    recipes,
+    users
+  }, {ACTION CREATOR HERE???}
+})(_AddNewRecipeForm)
+
+*/
+
+
 /*
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
@@ -624,9 +648,20 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
     createNewRecipe: (recipe) => dispatch(addRecipeAxios(recipe))
     }
 })(_AddNewRecipeForm)
-
-
 */
+/*
+const AddNewRecipeForm = connect(({recipes,users}) => {
+  return {
+    recipes,
+    users
+  }
+}, (dispatch) => {
+  return {
+    createNewRecipe: (recipe) => dispatch(addRecipeAxios(recipe))
+    }
+})(_AddNewRecipeForm)
+*/
+
 
 //THE BELOW HAS BEEN COMMENTED OUT UNTIL THIS IS CONVERTED TO REDUX THUNKS
 /*
