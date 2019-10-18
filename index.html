@@ -64,11 +64,25 @@
     ////////////////////CURRENT CODE BEFORE REFACTORING TO REDUX THUNKS///////////////////////////////////////
         //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
 
+        ////////////////////////////REDUX - DISPATCH FOR RECIPES//////////////////////////////////////////
+
         const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
+
+        const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
+
+        //REQUIRES RECIPE.ID TO PASSED IN FROM RECIPE AS ARGUMENT AND PARAMETER
+        //const deleteRecipe = async() => store.dispatch({type: DELETE_RECIPE, recipe: (await axios.delete(`/api/recipes/${recipe.id}`, recipe))})
+
+       ////////////////////////////REDUX - DISPATCH FOR USERS//////////////////////////////////////////
 
         const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
 
-        const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
+        const addUser = async() => store.dispatch({type: ADD_USER, USER: (await axios.post('/api/users', user)).data})
+
+        //REQUIRES USER.ID TO PASSED IN FROM USER AS ARGUMENT AND PARAMETER
+        //const deleteUser = async() => store.dispatch({type: DELETE_USER, user: (await axios.delete(`/api/recipes/${user.id}`, user))})
+
+
 
     //////////////////////////////////////////////////////////////////////////
     /////////////////////////REDUX - ACTION TYPES/////////////////////////////
@@ -93,12 +107,12 @@
     /////////////////////////RECIPE ACTION CREATORS/////////////////////////////
     const setRecipesAction = (recipes) => ({type: SET_RECIPES, recipes})
     const addRecipeAction = (recipe) => ({type: ADD_RECIPE, recipe})
-
+    const deleteRecipeAction = (recipe) => ({type: DELETE_RECIPE, recipe})
 
      /////////////////////////USER ACTION CREATORS/////////////////////////////
     const setUsersAction = (users) => ({type: SET_USERS, users})
-    const addUserAction = (recipe) => ({type: ADD_USER, user})
-
+    const addUserAction = (user) => ({type: ADD_USER, user})
+    const deleteUserAction = (user) => ({type: DELETE_USER, user})
 
 
 
@@ -124,6 +138,13 @@
         }
     }
 
+    const deleteRecipeThunk = (recipe) => {
+      return async dispatch => {
+        await axios.delete(`/api/recipes/${recipe.id}`, recipe);
+        dispatch(deleteRecipeAction(recipe))
+        }
+    }
+
 
    ////////////////////////     USER - THUNKS    //////////////////////////////
 
@@ -139,6 +160,13 @@
       return async dispatch => {
         const postUser = (await axios.post('/api/users', user)).data;
         dispatch(addUserAction(postUser))
+        }
+    }
+
+    const deleteUserThunk = (user) => {
+      return async dispatch => {
+        await axios.delete(`/api/users/${user.id}`, user);
+        dispatch(deleteUserAction(user))
         }
     }
 
@@ -523,7 +551,9 @@ const AddRecipe = connect(({recipes, users}) => {
   }
 })(_AddRecipe)
 
-
+//////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////ADD NEW CLASS AND FORM////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 //CREATING THE ADD NEW RECIPE AS A CLASS
 
