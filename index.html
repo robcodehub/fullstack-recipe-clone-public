@@ -63,8 +63,21 @@
     const SET_RECIPES = 'SET_RECIPES'
     const SET_USERS = 'SET_USERS'
     const ADD_RECIPE = 'ADD_RECIPE'
+    const DELETE_RECIPE = 'DELETE_RECIPE'
 
 
+    //REDUX - ACTION CREATORS
+
+    //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
+
+    const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
+
+    const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
+
+    const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
+
+
+    //REDUX - REDUCERS
     const userReducer = (state = [], action) => {
       //ADD IF ACTION.TYPE HERE
       if (action.type === SET_USERS) {
@@ -79,7 +92,11 @@
         state = action.recipes;
       } else if (action.type === ADD_RECIPE) {
         return [...state, action.recipe]
+      } else if (action.type === DELETE_RECIPE) {
+        return state.recipes.filter(recipe => recipe.id !== action.recipe.id)
       }
+
+
       return state;
     }
 
@@ -94,13 +111,7 @@
       const store = createStore(reducer);
 
 
-    //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
 
-    const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
-
-    const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
-
-    const addRecipe = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
 
 
     const _Home = ({users, recipes}) => {

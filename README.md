@@ -104,16 +104,16 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
  #### Backend
 
-- [ ] Write a route to add a new recipe (if given a user, that users chefScore should increase and that user should be associated with the new recipe)
-- [ ] Write a route to add a new user
+- [ ] IN PROGRESS - Write a route to add a new recipe (if given a user, that users chefScore should increase and that user should be associated with the new recipe)
+- [ ] IN PROGRESS - Write a route to add a new user
 
 #### Frontend
 
-- [ ] Write a component to display a form for adding a new recipe that contains inputs for all recipe information (including associated user. Note that cuisine should be a dropdown of options).
-- [ ] Display this component EITHER as part of the all-recipes view, or as its own view
+- [ ] IN PROGRESS - Write a component to display a form for adding a new recipe that contains inputs for all recipe information (including associated user. Note that cuisine should be a dropdown of options).
+- [ ] IN PROGRESS - Display this component EITHER as part of the all-recipes view, or as its own view
 - [ ] Submitting the form with a valid name should:
-  - [ ] Make an AJAX request that causes the new recipe to be persisted in the database
-  - [ ] Add the new recipe to the list of recipes without needing to refresh the page
+  - [ ] IN PROGRESS - Make an AJAX request that causes the new recipe to be persisted in the database
+  - [ ] IN PROGRESS - Add the new recipe to the list of recipes without needing to refresh the page
 
 - [ ] Write a component to display a form for adding a new user that contains inputs for _at least_ username and email
 - [ ] Display this component EITHER as part of the all-users view, or as its own view
