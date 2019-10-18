@@ -17,8 +17,11 @@ app.get('/', (req, res, next)=> {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
+/////////////////////////////////////////////////////////////
+/////////////////////EXPRESS ROUTES//////////////////////////
+/////////////////////////////////////////////////////////////
 
-//RECIPE ROUTES
+//////////////////EXPRESS RECIPE ROUTES//////////////////////
 
 app.get('/api/recipes', async (req, res, next) => {
   Recipe.findAll({include: [User]})
@@ -26,9 +29,15 @@ app.get('/api/recipes', async (req, res, next) => {
   .catch(next);
 });
 
+//ADD A POST ROUTE FOR RECIPES
 
 
-//USER ROUTES
+
+//ADD A DELETE ROUTE FOR RECIPES
+
+
+
+//////////////////EXPRESS USER ROUTES//////////////////////
 app.get('/api/users', (req, res, next) => {
   console.log("THIS CODE RUNS FOR USERS.....")
   User.findAll()
@@ -36,6 +45,11 @@ app.get('/api/users', (req, res, next) => {
   .catch(next)
 });
 
+
+//ADD A POST ROUTE FOR USERS
+
+
+//ADD A DELETE ROUTE FOR USERS
 
 
 //CHEF ROUTES - USERS WITH RECIPES
