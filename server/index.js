@@ -30,11 +30,20 @@ app.get('/api/recipes', async (req, res, next) => {
 });
 
 //ADD A POST ROUTE FOR RECIPES
-
+app.post('/api/recipes', (req, res, next) => {
+  Recipe.create(req.body)
+  .then(newRecipe => res.status(201).send(newRecipe))
+  .catch(next)
+});
 
 
 //ADD A DELETE ROUTE FOR RECIPES
-
+app.delete('/api/recipes/:id', (req, res, next) => {
+  User.findByPk(req.params.id)
+  .then(currentRecipe => currentRecipe.destroy())
+  .then(res.sendStatus(204))
+  .catch(next)
+});
 
 
 //////////////////EXPRESS USER ROUTES//////////////////////
