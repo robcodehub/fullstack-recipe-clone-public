@@ -101,9 +101,9 @@ class _Recipes extends Component {
     this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
-   async deleteRecipe(recipe) {
-     console.log("RECIPE IN DELETE RECIPE======", recipe)
-    await this.props.delete(recipe.id)
+   async deleteRecipe(recipeId) {
+     console.log("RECIPE IN DELETE RECIPE======", recipeId)
+    await this.props.delete(recipeId)
   }
 
   render() {
@@ -128,7 +128,7 @@ class _Recipes extends Component {
       Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <br />
       <Link to={`/recipes/${recipe.id}`}>
       Link to Recipe</Link> <br /> <br />
-      <button onClick={() => deleteRecipe(recipe.id)} className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>)}
+      <button onClick={ () => deleteRecipe(recipe.id) } className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>)}
       <br /> <br />
       <AddNewRecipeForm />
     </div>
@@ -148,7 +148,7 @@ const mapStateToProps = ({ users, recipes }) => {
 }
 
 const mapToDispatch = {
-    delete: deleteRecipeThunk
+  delete: deleteRecipeThunk
 }
 
 
