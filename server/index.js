@@ -11,6 +11,10 @@ const { Op } = Sequelize;
 const { models } = require('./db')
 const { Recipe, User } = models;
 
+
+//app.use(express.json()); //middleware - required?
+
+
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 app.get('/', (req, res, next)=> {
@@ -82,3 +86,6 @@ db.syncAndSeed()
 .then(() => {
 app.listen(port, ()=> console.log(`listening on port ${port}`))
 });
+
+
+//module.exports = app //required - when moving to webpack?
