@@ -136,9 +136,9 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 #### Frontend
 
 - [x] In the all-recipes view, include an `X` button next to each recipe
-- [ ] Clicking the `X` button should:
-  - [ ] Make an AJAX request that causes that recipe to be removed from database
-  - [ ] Remove the recipe from the list of recipes without needing to refresh the page
+- [x] Clicking the `X` button should:
+  - [x] Make an AJAX request that causes that recipe to be removed from database
+  - [x] Remove the recipe from the list of recipes without needing to refresh the page
 
 - [x] In the all-users view, include an `X` button next to each user
 - [ ] Clicking the `X` button should:
