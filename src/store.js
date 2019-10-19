@@ -119,7 +119,7 @@ import thunk from 'redux-thunk'
       } else if (action.type === DELETE_RECIPE) {
           console.log("STATE IN DELETE_RECIPE=====", state)
           console.log("ACTION IN DELETE_RECIPE=====", action)
-          return state.filter(recipe => recipe.id !== action.id)
+          return state.filter(recipe => recipe.id !== action.recipe)
       }
       return state;
     }
