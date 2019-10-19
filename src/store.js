@@ -101,6 +101,16 @@ import thunk from 'redux-thunk'
         }
     }
 
+    /*
+    const updateUserThunk = (user) => {
+      const currentChefScore = user.chefScore;
+      return async dispatch => {
+        const updateUser = (await axios.put(`/api/users/${user.id}`, {user, chefScore: currentChefScore + 1})).data;
+        dispatch(addUserAction(postUser))
+        }
+    }
+*/
+
 
 
     /////////////////////////////////////////////////////////////////////////////
