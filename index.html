@@ -606,23 +606,26 @@ class _AddNewRecipeForm extends Component {
 
 }
 
+/*
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
     recipes,
     users
   }
 })(_AddNewRecipeForm)
-
+*/
 
 //CONNECTED ADD NEW RECIPE FORM TO ACTION CREATOR
 
 //MAPSTATETOPROPS - NOT REQUIRED??? - ALREADY FACTORED INTO CONNECT
+/*
 const mapStateToProps = (state) => {
   return {
     recipes,
     users
   }
 }
+*/
 
 
 /*
@@ -637,7 +640,7 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
 */
 
 
-/*
+
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
     recipes,
@@ -648,7 +651,7 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
     createNewRecipe: (recipe) => dispatch(addRecipeAxios(recipe))
     }
 })(_AddNewRecipeForm)
-*/
+
 /*
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
