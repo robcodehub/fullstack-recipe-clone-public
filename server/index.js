@@ -43,7 +43,7 @@ app.post('/api/recipes', (req, res, next) => {
 
 //ADD A DELETE ROUTE FOR RECIPES
 app.delete('/api/recipes/:id', (req, res, next) => {
-  User.findByPk(req.params.id)
+  Recipe.findByPk(req.params.id)
   .then(currentRecipe => currentRecipe.destroy())
   .then(res.sendStatus(204))
   .catch(next)
@@ -67,6 +67,13 @@ app.post('/api/users', (req, res, next) => {
 });
 
 //ADD A DELETE ROUTE FOR USERS
+app.delete('/api/users/:id', (req, res, next) => {
+  User.findByPk(req.params.id)
+  .then(currentUser => currentUser.destroy())
+  .then(res.sendStatus(204))
+  .catch(next)
+})
+
 
 
 //CHEF ROUTES - USERS WITH RECIPES
