@@ -63,6 +63,8 @@ class _AddNewRecipeForm extends Component {
    createNewRecipe(ev) {
     ev.preventDefault()
       this.props.create(this.state);
+      console.log("THIS.PROP.USER IN CREATE RECIPE====", this.props.users.filter(user => user.id === this.state.userId))
+      //this.props.update(this.props.users)
   }
 
 
@@ -70,7 +72,10 @@ class _AddNewRecipeForm extends Component {
     console.log("PROPS IN RENDER======", this.props)
     const { name, cuisine, healthScore, ingredients, directions, imageURL } = this.state;
     const { createNewRecipe, onChangeSetState } = this;
-    const cuisinesSelect = ['desert', 'italian']
+    const cuisinesSelect = ['desert', 'italian'];
+
+    const setCuisines = [...new Set(this.props.recipes.map(recipe => recipe.cuisine))];
+    console.log("CUISINES IN RECIPE FORM======", setCuisines)
 
     const { users } = this.props;
     console.log("USERS IN RENDER ADD RECIPES======", users)
@@ -119,7 +124,8 @@ const mapStateToProps = ({ users, recipes }) => {
 }
 
 const mapToDispatch = {
-    create: addRecipeThunk
+    create: addRecipeThunk //,
+    //update: increaseUserScoreThunk
 }
 
 

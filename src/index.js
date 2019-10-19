@@ -46,15 +46,15 @@ class App extends Component {
         <HashRouter>
           <Route component = {Nav} />
           <Switch>
-          <Route path = '/' component = { Home } exact />
-          <Route path = '/users' component = { Users } exact />
-          <Route path = '/recipes' component = { Recipes } exact />
-          <Route path = '/chefs' component = { Chefs } exact />
-          <Route path = '/recipes/:id' component = { OneRecipe } />
-          <Route path = '/users/:id' component = { OneUser } />
-          <Route path = '/addrecipe' component = { AddNewRecipeForm } />
-          <Route path = '/adduser' component = { AddNewUserForm } />
-          <Route component = { Home } />
+            <Route path = '/' component = { Home } exact />
+            <Route path = '/users' component = { Users } exact />
+            <Route path = '/recipes' component = { Recipes } exact />
+            <Route path = '/chefs' component = { Chefs } exact />
+            <Route path = '/recipes/:id' component = { OneRecipe } />
+            <Route path = '/users/:id' component = { OneUser } />
+            <Route path = '/addrecipe' component = { AddNewRecipeForm } />
+            <Route path = '/adduser' component = { AddNewUserForm } />
+            <Route component = { Home } />
           </Switch>
         </HashRouter>
       </Provider>

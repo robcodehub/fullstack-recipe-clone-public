@@ -101,15 +101,17 @@ import thunk from 'redux-thunk'
         }
     }
 
-    /*
+
     const increaseUserScoreThunk = (user) => {
+      console.log("USER IN INCREASE USER SCORE THUNK======", user)
       const currentChefScore = user.chefScore;
       return async dispatch => {
         const updateUser = (await axios.put(`/api/users/${user.id}`, {user, chefScore: currentChefScore + 1})).data;
-        dispatch(updateUserAction(postUser))
+        dispatch(updateUserAction(updateUser))
         }
     }
 
+    /*
     const decreaseeUserScoreThunk = (user) => {
       const currentChefScore = user.chefScore;
       return async dispatch => {
@@ -148,8 +150,6 @@ import thunk from 'redux-thunk'
       } else if (action.type === ADD_RECIPE) {
           return [...state, action.recipe]
       } else if (action.type === DELETE_RECIPE) {
-          console.log("STATE IN DELETE_RECIPE=====", state)
-          console.log("ACTION IN DELETE_RECIPE=====", action)
           return state.filter(recipe => recipe.id !== action.recipe)
       }
       return state;
