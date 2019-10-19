@@ -130,8 +130,8 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
 #### Backend
 
-- [ ] Write a route to remove a recipe (based on its id, the associated user should get a decrease in their chefScore)
-- [ ] Write a route to remove a user (based on their id)
+- [ ] IN PROGRESS - Write a route to remove a recipe (based on its id, the associated user should get a decrease in their chefScore)
+- [x] Write a route to remove a user (based on their id)
 
 #### Frontend
 
@@ -141,9 +141,9 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
   - [x] Remove the recipe from the list of recipes without needing to refresh the page
 
 - [x] In the all-users view, include an `X` button next to each user
-- [ ] Clicking the `X` button should:
-  - [ ] Make an AJAX request that causes that user to be removed from database
-  - [ ] Remove the user from the list of users without needing to refresh the page
+- [x] Clicking the `X` button should:
+  - [x] Make an AJAX request that causes that user to be removed from database
+  - [x] Remove the user from the list of users without needing to refresh the page
 
 </details>
 

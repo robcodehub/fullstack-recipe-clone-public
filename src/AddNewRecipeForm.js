@@ -41,6 +41,7 @@ class _AddNewRecipeForm extends Component {
 
   this.state = {
     name: "",
+    userId: "",
     cuisine: "",
     healthScore: "",
     ingredients: "",
@@ -55,6 +56,7 @@ class _AddNewRecipeForm extends Component {
     this.setState({
       [ev.target.name]: ev.target.value
     })
+    console.log("STATE AFTER CHANGE====", this.state)
   }
 
 
@@ -70,10 +72,14 @@ class _AddNewRecipeForm extends Component {
     const { createNewRecipe, onChangeSetState } = this;
     const cuisinesSelect = ['desert', 'italian']
 
+    const { users } = this.props;
+    console.log("USERS IN RENDER ADD RECIPES======", users)
+
     const healthScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
     return (
       <div>
         <form id="new-recipe-form" onSubmit={createNewRecipe}>
+          Chef Name: <select name="userId" onChange={onChangeSetState}> {users.map(user => <option key={user.id} value={user.id}> {user.username} </option>)} </select>
           Recipe Name: <input type="text" name="name" onChange={onChangeSetState}/>
           Cuisine: <select name="cuisine" onChange={onChangeSetState}> {cuisinesSelect.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>
           Health Score: <select name="healthScore" onChange={onChangeSetState}> {healthScores.map(score => <option key={score} value={score}>{score}</option>)} </select>

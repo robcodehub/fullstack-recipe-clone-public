@@ -113,7 +113,6 @@ class _Recipes extends Component {
 
     const chefsTest = recipes.filter(recipe => recipe.user)
 
-
   console.log("RECIPES =======", recipes)
   console.log("RECIPES WITH CHEF =======", chefsTest)
   console.log("PROPS ======", this.props)
