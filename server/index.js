@@ -49,6 +49,8 @@ app.delete('/api/recipes/:id', (req, res, next) => {
   .catch(next)
 });
 
+//ADD AN UPDATE ROUTE FOR RECIPES
+
 
 //////////////////EXPRESS USER ROUTES//////////////////////
 app.get('/api/users', (req, res, next) => {
@@ -59,14 +61,14 @@ app.get('/api/users', (req, res, next) => {
 });
 
 
-//ADD A POST ROUTE FOR USERS
+//POST ROUTE FOR USERS
 app.post('/api/users', (req, res, next) => {
   User.create(req.body)
   .then(newUser => res.status(201).send(newUser))
   .catch(next)
 });
 
-//ADD A DELETE ROUTE FOR USERS
+//DELETE ROUTE FOR USERS
 app.delete('/api/users/:id', (req, res, next) => {
   User.findByPk(req.params.id)
   .then(currentUser => currentUser.destroy())
@@ -74,7 +76,14 @@ app.delete('/api/users/:id', (req, res, next) => {
   .catch(next)
 })
 
-
+//ADD AN UPDATE ROUTE FOR USERS
+app.put('/api/users/:id', (req, res, next) => {
+  const updateInfo = req.body;
+  const userToUpdate = User.findByPk(req.params.id)
+  User.update(updateInfo, userToUpdate)
+  .then(updatedUser => res.status(204).send(updatedUser))
+  .catch(next)
+})
 
 //CHEF ROUTES - USERS WITH RECIPES
 

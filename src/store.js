@@ -11,12 +11,13 @@ import thunk from 'redux-thunk'
     const SET_RECIPES = 'SET_RECIPES'
     const ADD_RECIPE = 'ADD_RECIPE'
     const DELETE_RECIPE = 'DELETE_RECIPE'
+    const UPDATE_RECIPE = 'UPDATE_RECIPE'
 
     /////////////////////////USER - ACTION TYPES/////////////////////////////
     const SET_USERS = 'SET_USERS'
     const ADD_USER = 'ADD_USER'
     const DELETE_USER = 'DELETE_USER'
-
+    const UPDATE_USER = 'UPDATE_USER'
 
 
 
@@ -28,12 +29,13 @@ import thunk from 'redux-thunk'
     const setRecipesAction = (recipes) => ({type: SET_RECIPES, recipes})
     const addRecipeAction = (recipe) => ({type: ADD_RECIPE, recipe})
     const deleteRecipeAction = (recipe) => ({type: DELETE_RECIPE, recipe})
+    const updateRecipeAction = (recipe) => ({type: UPDATE_RECIPE, recipe})
 
      /////////////////////////USER ACTION CREATORS/////////////////////////////
     const setUsersAction = (users) => ({type: SET_USERS, users})
     const addUserAction = (user) => ({type: ADD_USER, user})
     const deleteUserAction = (user) => ({type: DELETE_USER, user})
-
+    const updateUserAction = (user) => ({type: UPDATE_USER, user})
 
 
     /////////////////////////////////////////////////////////////////////////////
@@ -65,6 +67,15 @@ import thunk from 'redux-thunk'
         }
     }
 
+    //TO COMPLETE AND CONVERT TO UPDATE
+    /*
+    const updateRecipeThunk = (recipe) => {
+      return async (dispatch) => {
+        const postRecipe = (await axios.post('/api/recipes', recipe)).data;
+        dispatch(addRecipeAction(postRecipe))
+        }
+    }
+*/
 
    ////////////////////////     USER - THUNKS    //////////////////////////////
 
