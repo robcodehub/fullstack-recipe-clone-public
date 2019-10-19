@@ -102,11 +102,19 @@ import thunk from 'redux-thunk'
     }
 
     /*
-    const updateUserThunk = (user) => {
+    const increaseUserScoreThunk = (user) => {
       const currentChefScore = user.chefScore;
       return async dispatch => {
         const updateUser = (await axios.put(`/api/users/${user.id}`, {user, chefScore: currentChefScore + 1})).data;
-        dispatch(addUserAction(postUser))
+        dispatch(updateUserAction(postUser))
+        }
+    }
+
+    const decreaseeUserScoreThunk = (user) => {
+      const currentChefScore = user.chefScore;
+      return async dispatch => {
+        const updateUser = (await axios.put(`/api/users/${user.id}`, {user, chefScore: currentChefScore - 1})).data;
+        dispatch(updateUserAction(updateUser))
         }
     }
 */
@@ -126,6 +134,8 @@ import thunk from 'redux-thunk'
           return [...state, action.user]
       } else if (action.type === DELETE_USER) {
           return state.filter(user => user.id !== action.user)
+      } else if (action.type === UPDATE_USER) {
+          return [...state, action.user] //NEED TO UDPATE FOR UPDATE USER
       }
       return state;
     }

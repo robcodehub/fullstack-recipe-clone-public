@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { render } from 'react-dom';
 
 import { Provider, connect } from 'react-redux';
-import { HashRouter, Link, Route } from 'react-router-dom'
+import { HashRouter, Link, Route, Switch } from 'react-router-dom'
 
 import Nav from './Nav';
 import Home from './Home';
@@ -45,6 +45,7 @@ class App extends Component {
       <Provider store={store}>
         <HashRouter>
           <Route component = {Nav} />
+          <Switch>
           <Route path = '/' component = { Home } exact />
           <Route path = '/users' component = { Users } exact />
           <Route path = '/recipes' component = { Recipes } exact />
@@ -53,6 +54,7 @@ class App extends Component {
           <Route path = '/users/:id' component = { OneUser } />
           <Route path = '/addrecipe' component = { AddNewRecipeForm } />
           <Route path = '/adduser' component = { AddNewUserForm } />
+          </Switch>
         </HashRouter>
       </Provider>
     )

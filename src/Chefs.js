@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import TopChef from './TopChefs';
 
   //////////////////////CHEFS CONNECTED COMPONENT////////////////////////////////////
     //{recipes.filter(recipe => recipe.user)}
