@@ -60,7 +60,11 @@ app.get('/api/users', (req, res, next) => {
 
 
 //ADD A POST ROUTE FOR USERS
-
+app.post('/api/users', (req, res, next) => {
+  User.create(req.body)
+  .then(newUser => res.status(201).send(newUser))
+  .catch(next)
+});
 
 //ADD A DELETE ROUTE FOR USERS
 

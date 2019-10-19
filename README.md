@@ -111,9 +111,9 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
 - [x] Write a component to display a form for adding a new recipe that contains inputs for all recipe information (including associated user. Note that cuisine should be a dropdown of options).
 - [x] Display this component EITHER as part of the all-recipes view, or as its own view
-- [ ] IN PROGRESS - ubmitting the form with a valid name should:
-  - [ ] IN PROGRESS - Make an AJAX request that causes the new recipe to be persisted in the database
-  - [ ] IN PROGRESS - Add the new recipe to the list of recipes without needing to refresh the page
+- [x] Submitting the form with a valid name should:
+  - [x] Make an AJAX request that causes the new recipe to be persisted in the database
+  - [x] Add the new recipe to the list of recipes without needing to refresh the page
 
 - [ ] Write a component to display a form for adding a new user that contains inputs for _at least_ username and email
 - [ ] Display this component EITHER as part of the all-users view, or as its own view
