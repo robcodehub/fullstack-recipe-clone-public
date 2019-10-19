@@ -135,12 +135,12 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
 #### Frontend
 
-- [ ] In the all-recipes view, include an `X` button next to each recipe
+- [x] In the all-recipes view, include an `X` button next to each recipe
 - [ ] Clicking the `X` button should:
   - [ ] Make an AJAX request that causes that recipe to be removed from database
   - [ ] Remove the recipe from the list of recipes without needing to refresh the page
 
-- [ ] In the all-users view, include an `X` button next to each user
+- [x] In the all-users view, include an `X` button next to each user
 - [ ] Clicking the `X` button should:
   - [ ] Make an AJAX request that causes that user to be removed from database
   - [ ] Remove the user from the list of users without needing to refresh the page

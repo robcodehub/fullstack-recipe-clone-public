@@ -9,7 +9,7 @@ const _Users = ({users}) => {
   return (
     <div>
       {users.length} Users coming soon...
-      {users.map(user => <div key={user.id}> <br /> Chef Name: {user.username} <br /> Chef Score: {user.chefScore} <br /> Profile Image: <br /> <img height="150" width="150" src={user.imageURL} /> <Link to={`/users/${user.id}`}> Link to User</Link> <br /></div>)}
+      {users.map(user => <div key={user.id}> <br /> Chef Name: {user.username} <br /> Chef Score: {user.chefScore} <br /> Profile Image: <br /> <img height="150" width="150" src={user.imageURL} /> <Link to={`/users/${user.id}`}> Link to User</Link> <br /> <br /> <br /> <button class="delete-recipe"> X </button> Delete User Above <br /></div>)}
       <AddNewUserForm />
     </div>
   )
