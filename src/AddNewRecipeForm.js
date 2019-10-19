@@ -48,13 +48,14 @@ class _AddNewRecipeForm extends Component {
     imageURL: ""
     }
     this.createNewRecipe = this.createNewRecipe.bind(this);
+    this.onChangeSetState = this.onChangeSetState.bind(this);
   }
 
-  /*onChange(ev) {
+  onChangeSetState(ev) {
     this.setState({
       [ev.target.name]: ev.target.value
     })
-  }*/
+  }
 
 
    createNewRecipe(ev) {
@@ -66,7 +67,7 @@ class _AddNewRecipeForm extends Component {
   render() {
     console.log("PROPS IN RENDER======", this.props)
     const { name, cuisine, healthScore, ingredients, directions, imageURL } = this.state;
-    const { createNewRecipe } = this;
+    const { createNewRecipe, onChangeSetState } = this;
     const cuisinesSelect = ['desert', 'italian']
 
     const healthScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
@@ -74,12 +75,12 @@ class _AddNewRecipeForm extends Component {
       <div>
           Add New Recipe Form coming soon...
         <form id="new-recipe-form" onSubmit={createNewRecipe}>
-          Recipe Name: <input type="text" name="name" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
-          Cuisine: <select> {cuisinesSelect.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>
-          Health Score: <select> {healthScores.map(score => <option key={score} value={score}>{score}</option>)} </select>
-          Ingredients: <input name="ingredients" type="text" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
-          Directions: <input type="text" name="directions" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
-          Link to Image (Image URL): <input type="text" name="imageURL" onChange={ev => this.setState({[ev.target.name]: ev.target.value})}/>
+          Recipe Name: <input type="text" name="name" onChange={onChangeSetState}/>
+          Cuisine: <select onChange={onChangeSetState}> {cuisinesSelect.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>
+          Health Score: <select onChange={onChangeSetState}> {healthScores.map(score => <option key={score} value={score}>{score}</option>)} </select>
+          Ingredients: <input name="ingredients" type="text" onChange={onChangeSetState}/>
+          Directions: <input type="text" name="directions" onChange={onChangeSetState}/>
+          Link to Image (Image URL): <input type="text" name="imageURL" onChange={onChangeSetState}/>
 
           <button type="submit"> Add New Recipe </button>
         </form>
