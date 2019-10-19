@@ -68,7 +68,7 @@
 
         const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
 
-        const addRecipeAxios = async() => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
+        const addRecipeAxios = async(recipe) => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
 
         //REQUIRES RECIPE.ID TO PASSED IN FROM RECIPE AS ARGUMENT AND PARAMETER
         //const deleteRecipeAxios = async() => store.dispatch({type: DELETE_RECIPE, recipe: (await axios.delete(`/api/recipes/${recipe.id}`, recipe))})
