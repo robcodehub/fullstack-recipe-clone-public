@@ -56,9 +56,12 @@
     const { Component } = React;
     const { render } = ReactDOM;
     const { HashRouter, Link, Route} = ReactRouterDOM;
-    const { createStore, combineReducers, applyMiddleware } = Redux;
-    const { thunkMiddleware, thunk, createThunkMiddleware } = ReduxThunk;
+    const { createStore, combineReducers, applyMiddleware, compose } = Redux;
+    const { thunkMiddleware, createThunkMiddleware } = ReduxThunk;
+    const reduxThunk = ReduxThunk;
     const { connect, Provider } = ReactRedux;
+
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
     ////////////////////CURRENT CODE BEFORE REFACTORING TO REDUX THUNKS///////////////////////////////////////
@@ -213,8 +216,15 @@
       const store = createStore(reducer) //, applyMiddleware(thunkMiddleware));
 
       //REDUX STORE WITH MIDDLEWARE
-      //const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+      //const store = createStore(reducer, applyMiddleware(thunk));
 
+      //const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk)));
+
+      /*
+      const middleware = applyMiddleware(thunk, logger());
+      const store = createStore(combineReducers({booleanReducer,searchItunesReducer}),middleware);
+      console.log(store.getState());
+      */
 
 
 //////////////////////HOME CONNECTED COMPONENT////////////////////////////////////
