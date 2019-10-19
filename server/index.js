@@ -12,7 +12,7 @@ const { models } = require('./db')
 const { Recipe, User } = models;
 
 
-//app.use(express.json()); //middleware - required?
+app.use(express.json()); //middleware - required?
 
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
@@ -88,4 +88,4 @@ app.listen(port, ()=> console.log(`listening on port ${port}`))
 });
 
 
-//module.exports = app //required - when moving to webpack?
+module.exports = app; //required - when moving to webpack?
