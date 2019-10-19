@@ -63,7 +63,7 @@ class _AddNewRecipeForm extends Component {
    createNewRecipe(ev) {
     ev.preventDefault()
       this.props.create(this.state);
-      console.log("THIS.PROP.USER IN CREATE RECIPE====", this.props.users.filter(user => user.id === this.state.userId))
+      console.log("THIS.PROP.USER IN CREATE RECIPE====", this.props.users.filter(user => user.id === this.state.userId)[0])
       //this.props.update(this.props.users)
   }
 
