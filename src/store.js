@@ -104,7 +104,7 @@ import thunk from 'redux-thunk'
       } else if (action.type === ADD_USER) {
           return [...state, action.user]
       } else if (action.type === DELETE_USER) {
-          return state.users.filter(user => user.id !== action.user.id)
+          return state.filter(user => user.id !== action.user)
       }
       return state;
     }
