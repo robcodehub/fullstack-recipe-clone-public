@@ -105,7 +105,7 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
  #### Backend
 
 - [ ] IN PROGRESS - Write a route to add a new recipe (if given a user, that users chefScore should increase and that user should be associated with the new recipe)
-- [ ] IN PROGRESS - Write a route to add a new user
+- [x] Write a route to add a new user
 
 #### Frontend
 
@@ -115,11 +115,11 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
   - [x] Make an AJAX request that causes the new recipe to be persisted in the database
   - [x] Add the new recipe to the list of recipes without needing to refresh the page
 
-- [ ] Write a component to display a form for adding a new user that contains inputs for _at least_ username and email
-- [ ] Display this component EITHER as part of the all-users view, or as its own view
-- [ ] Submitting the form with a valid username should:
-  - [ ] Make an AJAX request that causes the new user to be persisted in the database
-  - [ ] Add the new user to the list of users without needing to refresh the page
+- [x] Write a component to display a form for adding a new user that contains inputs for _at least_ username and email
+- [x] Display this component EITHER as part of the all-users view, or as its own view
+- [x] Submitting the form with a valid username should:
+  - [x] Make an AJAX request that causes the new user to be persisted in the database
+  - [x] Add the new user to the list of users without needing to refresh the page
 
 
  </details>
