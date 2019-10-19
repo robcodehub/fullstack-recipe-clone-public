@@ -57,10 +57,11 @@ import thunk from 'redux-thunk'
         }
     }
 
-    const deleteRecipeThunk = (recipe) => {
+    const deleteRecipeThunk = (recipeId) => {
+      console.log("RECIPE ID IN THUNK=====", recipeId)
       return async dispatch => {
-        await axios.delete(`/api/recipes/${recipe.id}`, recipe);
-        dispatch(deleteRecipeAction(recipe))
+        await axios.delete(`/api/recipes/${recipeId}`);
+        dispatch(deleteRecipeAction(recipeId))
         }
     }
 
@@ -116,7 +117,9 @@ import thunk from 'redux-thunk'
       } else if (action.type === ADD_RECIPE) {
           return [...state, action.recipe]
       } else if (action.type === DELETE_RECIPE) {
-          return state.recipes.filter(recipe => recipe.id !== action.recipe.id)
+          console.log("STATE IN DELETE_RECIPE=====", state)
+          console.log("ACTION IN DELETE_RECIPE=====", action)
+          return state.filter(recipe => recipe.id !== action.id)
       }
       return state;
     }
