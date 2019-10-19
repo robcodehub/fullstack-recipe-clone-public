@@ -54,6 +54,7 @@ class App extends Component {
           <Route path = '/users/:id' component = { OneUser } />
           <Route path = '/addrecipe' component = { AddNewRecipeForm } />
           <Route path = '/adduser' component = { AddNewUserForm } />
+          <Route component = { Home } />
           </Switch>
         </HashRouter>
       </Provider>
