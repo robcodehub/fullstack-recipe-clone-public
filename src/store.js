@@ -84,10 +84,10 @@ import thunk from 'redux-thunk'
         }
     }
 
-    const deleteUserThunk = (user) => {
+    const deleteUserThunk = (userId) => {
       return async dispatch => {
-        await axios.delete(`/api/users/${user.id}`, user);
-        dispatch(deleteUserAction(user))
+        await axios.delete(`/api/users/${userId}`);
+        dispatch(deleteUserAction(userId))
         }
     }
 
