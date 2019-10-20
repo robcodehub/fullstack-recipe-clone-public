@@ -17,15 +17,6 @@ import { connect } from 'react-redux';
     )
   }
 
-  /*
-  //NAV CONNECTED COMPONENT
-  const Nav = connect(({recipes, users}) => {
-    return {
-      recipes,
-      users
-    }
-  })(_Nav)
-*/
 
 
 

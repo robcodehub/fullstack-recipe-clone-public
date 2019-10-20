@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 
 import { addUserThunk } from './store'
 
-//====================WRITE A ROUTE TO ADD A NEW USER===========================
-//================================ADD RECIPE======================================
-//================================================================================
+
+//////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////ADD NEW USER FORM/////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -34,13 +35,19 @@ class _AddNewUserForm extends Component {
 
    createNewUser(ev) {
     ev.preventDefault()
-    console.log("STATE IN CREATE NEW USER====", this.state)
+
       this.props.create(this.state);
+      this.setState({
+        username: "",
+        email: "",
+        chefscore: "",
+        imageURL: "https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"
+      });
   }
 
 
   render() {
-    console.log("PROPS IN RENDER======", this.props)
+
     const { username, email, chefscore, imageURL } = this.state;
     const { createNewUser, onChangeSetState } = this;
 
@@ -63,18 +70,6 @@ class _AddNewUserForm extends Component {
 
 }
 
-/*
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }
-})(_AddNewRecipeForm)
-*/
-
-//CONNECTED ADD NEW RECIPE FORM TO ACTION CREATOR
-
-//MAPSTATETOPROPS - NOT REQUIRED??? - ALREADY FACTORED INTO CONNECT
 
 
 const mapStateToProps = ({ users, recipes }) => {

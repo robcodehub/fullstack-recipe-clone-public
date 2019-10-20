@@ -7,33 +7,9 @@ import { addRecipeThunk, increaseUserScoreThunk } from './store'
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////ADD NEW RECIPE SECTION////////////////////////////////////
+////////////////////////////ADD NEW RECIPE FORM///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
-
-//====================WRITE A ROUTE TO ADD A NEW RECIPE===========================
-//================================ADD RECIPE======================================
-//================================================================================
-
-/*
-const _AddRecipe = () => {
-
-}
-
-
-const AddRecipe = connect(({recipes, users}) => {
-  return {
-    users,
-    recipes
-  }
-})(_AddRecipe)
-
-*/
-//////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////ADD NEW CLASS AND FORM////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-
-//CREATING THE ADD NEW RECIPE AS A CLASS
 
 class _AddNewRecipeForm extends Component {
   constructor() {
@@ -56,32 +32,42 @@ class _AddNewRecipeForm extends Component {
     this.setState({
       [ev.target.name]: ev.target.value
     })
-    console.log("STATE AFTER CHANGE====", this.state)
+
   }
 
 
    createNewRecipe(ev) {
     ev.preventDefault()
       this.props.create(this.state);
-      console.log("THIS.PROPS.CREATE====", this.props.create)
+
       let userToUpdate = (this.props.users.filter(user => user.id === this.state.userId)[0]);
-      console.log("USER TO UPDATE====", userToUpdate)
-      console.log("THIS.PROPS.UPDATE====", this.props.update)
+
       this.props.update(userToUpdate)
+
+      this.setState({
+        name: "",
+        userId: "",
+        cuisine: "",
+        healthScore: "",
+        ingredients: "",
+        directions: "",
+        imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTAUvIcVUA_ch4ar2R-9-ZiVgoyR1tYKXg8PJMDWujJv29RLmKu"
+        });
+
   }
 
 
   render() {
-    console.log("PROPS IN RENDER======", this.props)
+
     const { name, cuisine, healthScore, ingredients, directions, imageURL } = this.state;
     const { createNewRecipe, onChangeSetState } = this;
-    const cuisinesSelect = ['desert', 'italian'];
+
 
     const setCuisines = [...new Set(this.props.recipes.map(recipe => recipe.cuisine))];
-    console.log("CUISINES IN RECIPE FORM======", setCuisines)
+
 
     const { users } = this.props;
-    console.log("USERS IN RENDER ADD RECIPES======", users)
+
 
     const healthScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
     return (
@@ -89,7 +75,7 @@ class _AddNewRecipeForm extends Component {
         <form id="new-recipe-form" onSubmit={createNewRecipe}>
           Chef Name: <select name="userId" onChange={onChangeSetState}> {users.map(user => <option key={user.id} value={user.id}> {user.username} </option>)} </select>
           Recipe Name: <input type="text" name="name" onChange={onChangeSetState}/>
-          Cuisine: <select name="cuisine" onChange={onChangeSetState}> {cuisinesSelect.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>
+          Cuisine: <select name="cuisine" onChange={onChangeSetState}> {setCuisines.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>
           Health Score: <select name="healthScore" onChange={onChangeSetState}> {healthScores.map(score => <option key={score} value={score}>{score}</option>)} </select>
           Ingredients: <input name="ingredients" type="text" onChange={onChangeSetState}/>
           Directions: <input type="text" name="directions" onChange={onChangeSetState}/>
@@ -105,31 +91,6 @@ class _AddNewRecipeForm extends Component {
 
 }
 
-// THE BELOW WORKS TO ADD RECIPE BUT NOT TO UPDATE CHEF SCORE
-
-/*
-const mapStateToProps = ({ users, recipes }) => {
-  return {
-    users,
-    recipes
-  }
-}
-
-
-const mapToDispatch = {
-  create: addRecipeThunk
-}
-
-const AddNewRecipeForm = connect(mapStateToProps, mapToDispatch)(_AddNewRecipeForm)
-export default AddNewRecipeForm;
-
-*/
-
-//END OF WORKING CODE FOR ADDING A RECIPE BUT NOT UPDATING CHEF SCORE
-
-
-
-//THE BELOW IS AN ATTEMPT TO CREATE RECIPE AND UPDATE CHEF SCORE
 
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
@@ -147,101 +108,3 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
 export default AddNewRecipeForm;
 
 
-//END OF CODE WITH ATTEMPT TO CREATE RECIPE AND UPDATE CHEF SCORE
-
-
-/*
-const mapToDispatch = dispatch => {
-    return ({
-    create: async (recipe) => dispatch(addRecipeThunk(recipe)),
-    update: async (user) => dispatch(increaseUserScoreThunk(user))
-    })
-}
-*/
-
-/*
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }
-})(_AddNewRecipeForm)
-*/
-
-//CONNECTED ADD NEW RECIPE FORM TO ACTION CREATOR
-
-//MAPSTATETOPROPS - NOT REQUIRED??? - ALREADY FACTORED INTO CONNECT
-
-
-
-
-
-
-/*
-mapDispatchToProps = (dispatch) => {
-  return {
-    addRecipesAction: () => {
-      dispatch(addRecipesThunk());
-    }
-  }
-}
-*/
-
-/*
-
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }
-}, (dispatch) => {
-  return {
-    createNewRecipe: (recipe) => dispatch(addRecipeAxios(recipe))
-    }
-})(_AddNewRecipeForm)
-
-*/
-
-
-/*
-
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }, {ACTION CREATOR HERE???}
-})(_AddNewRecipeForm)
-
-*/
-
-
-
-
-/*
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }
-}, (dispatch) => {
-  return {
-    createNewRecipe: (recipe) => dispatch(addRecipeAxios(recipe))
-    }
-})(_AddNewRecipeForm)
-*/
-
-
-//THE BELOW HAS BEEN COMMENTED OUT UNTIL THIS IS CONVERTED TO REDUX THUNKS
-/*
-/*
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }
-}, (dispatch) => {
-  return {
-    createNewRecipe: (recipe) => dispatch(addRecipeThunk(recipe))
-    }
-})(_AddNewRecipeForm)
-*/

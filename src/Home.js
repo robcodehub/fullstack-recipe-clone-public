@@ -14,22 +14,12 @@ const _Home = ({users, recipes}) => {
 
 return (
       <div>
-        Welcome! {users.length} users and {recipes.length} recipes coming soon...
+        Welcome! There are {users.length} users and {recipes.length} recipes!
 
         <HealthyRecipes />
-        The top chef is...
       </div>
     )
 }
-
-//HOME CONNECTED COMPONENT
-/*const Home = connect(({users, recipes}) => {
-  return {
-    users,
-    recipes
-  }
-})(_Home)
-*/
 
 const mapStateToProps = ({ users, recipes }) => {
   return {

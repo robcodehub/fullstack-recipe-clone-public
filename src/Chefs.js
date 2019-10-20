@@ -12,7 +12,7 @@ import TopChef from './TopChefs';
 
       const newListOfChefs = [];
 
-      
+
       console.log("NEW LIST OF CHEFS====", newListOfChefs)
 
       const setOfChefs = [...new Set(allChefs)]
@@ -35,7 +35,7 @@ import TopChef from './TopChefs';
 
       return (
         <div>
-          {setOfChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
+          {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
 
         </div>
       )

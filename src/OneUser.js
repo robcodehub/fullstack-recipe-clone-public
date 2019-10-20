@@ -33,14 +33,6 @@ const _OneUser = ({users, recipes, match}) => {
 }
 
 
-/*
-const OneUser = connect(({users, recipes}) => {
-  return {
-    users,
-    recipes
-  }
-})(_OneUser)
-*/
 
 
 const mapStateToProps = ({ users, recipes }) => {

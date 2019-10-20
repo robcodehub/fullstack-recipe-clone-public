@@ -9,19 +9,12 @@ import { connect } from 'react-redux';
 
 const _OneRecipe = ({recipes, users, match}) => {
 
-  //console.log("ONE RECIPE =======", match)
-
-  //const singleRecipe = recipes.filter(recipe => recipe.id === match.params.id)
-  //console.log("Single Recipe=====", singleRecipe)
 
   const singleRecipe = recipes.find(recipe => recipe.id === match.params.id);
 
-  console.log("RECIPE=====", singleRecipe)
 
   const recipeChef = users.find(user => user.id === singleRecipe.userId)
 
-
-  console.log("SINGLE RECIPE CHEF=====", recipeChef)
 
 
   return (
@@ -38,14 +31,6 @@ const _OneRecipe = ({recipes, users, match}) => {
   )
 }
 
-/*
-const OneRecipe = connect(({recipes, users}) => {
-  return {
-    recipes,
-    users
-  }
-})(_OneRecipe)
-*/
 
 
 const mapStateToProps = ({ users, recipes }) => {
