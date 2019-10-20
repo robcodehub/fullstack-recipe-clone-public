@@ -46,7 +46,7 @@ class _AddNewRecipeForm extends Component {
     healthScore: "",
     ingredients: "",
     directions: "",
-    imageURL: ""
+    imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTAUvIcVUA_ch4ar2R-9-ZiVgoyR1tYKXg8PJMDWujJv29RLmKu"
     }
     this.createNewRecipe = this.createNewRecipe.bind(this);
     this.onChangeSetState = this.onChangeSetState.bind(this);

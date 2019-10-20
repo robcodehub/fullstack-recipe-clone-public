@@ -19,7 +19,7 @@ class _AddNewUserForm extends Component {
     username: "",
     email: "",
     chefscore: "",
-    imageURL: ""
+    imageURL: "https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"
     }
     this.createNewUser = this.createNewUser.bind(this);
     this.onChangeSetState = this.onChangeSetState.bind(this);
