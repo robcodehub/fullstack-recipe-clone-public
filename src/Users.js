@@ -38,7 +38,7 @@ class _Users extends Component {
 
   return (
    <div>
-      {users.length} Users coming soon...
+      {users.length} in the database.
       {users.map(user => <div key={user.id}> <br />
         Chef Name: {user.username} <br />
         Chef Score: {user.chefScore} <br />
