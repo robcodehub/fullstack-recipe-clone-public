@@ -119,7 +119,7 @@ import thunk from 'redux-thunk'
     const decreaseUserScoreThunk = (user) => {
       console.log("USER IN DECREASE USER SCORE THUNK======", user)
       const newChefScore = user.chefscore - 1;
-      user.chefscore += 1;
+      user.chefscore -= 1;
       console.log("USER IN DECREASE THUNK=====", user)
       console.log("new chef score in DECREASE thunk=====", newChefScore)
       return async dispatch => {

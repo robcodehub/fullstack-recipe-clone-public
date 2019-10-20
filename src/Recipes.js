@@ -13,6 +13,8 @@ import {deleteRecipeAction} from './store'
 import { deleteRecipeThunk } from './store'
 
 import { increaseUserScoreThunk } from './store'
+import { decreaseUserScoreThunk } from './store'
+
 
 //////////////////////RECIPE CONNECTED COMPONENT////////////////////////////////////
 
@@ -102,21 +104,30 @@ class _Recipes extends Component {
     }
     this.deleteRecipe = this.deleteRecipe.bind(this);
   }
+//111111111 ----- CODE COMMENTED OUT FOR DECREASE USER SCORE
+ //  async deleteRecipe(recipeId) {
+ //    console.log("RECIPE IN DELETE RECIPE======", recipeId)
+ //   await this.props.delete(recipeId)
+//111111111 ----- CODE COMMENTED OUT FOR DECREASE USER SCORE
 
-   async deleteRecipe(recipeId) {
-     console.log("RECIPE IN DELETE RECIPE======", recipeId)
-    await this.props.delete(recipeId)
-
-    /* //UPDATE FOR DECREASE CHEF SCORE
-    async deleteRecipe(recipe, user) {
-     console.log("RECIPE IN DELETE RECIPE======", recipe)
+     //UPDATE FOR DECREASE CHEF SCORE
+    async deleteRecipe(recipe) {
     await this.props.delete(recipe.id)
+    console.log("RECIPE IN DELETE RECIPE======", recipe)
+    if(recipe.userId) {
+      console.log("RECIPE USER ID IN DELETE====", recipe.userId)
+      console.log("USERS IN PROPS IN DELETE RECIPE====", this.props.users)
+      let userToUpdate = (this.props.users.filter(user => user.id === recipe.userId)[0]);
+      this.props.update(userToUpdate)
+    }
 
-    let userToUpdate = (this.props.users.filter(user => user.id === recipe.chefId);
+
+/*
+    let userToUpdate = (this.props.users.filter(user => user.id === recipe.chefId)[0]);
     console.log("USER TO UPDATE====", userToUpdate)
     console.log("THIS.PROPS.UPDATE====", this.props.update)
     this.props.update(userToUpdate)
-    */
+*/
 
   }
 
@@ -132,7 +143,7 @@ class _Recipes extends Component {
   console.log("RECIPES WITH CHEF =======", chefsTest)
   console.log("PROPS ======", this.props)
   return (
-    <div> 
+    <div>
       {recipes.map(recipe => <div key = {recipe.id} > <br />  <br />
       Name: {recipe.name} <br />
       Cuisine: {recipe.cuisine} <br />
@@ -142,7 +153,7 @@ class _Recipes extends Component {
       Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <br />
       <Link to={`/recipes/${recipe.id}`}>
       Link to Recipe</Link> <br /> <br />
-      <button onClick={ () => deleteRecipe(recipe.id) } className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>)
+      <button onClick={ () => deleteRecipe(recipe) } className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>)
     }
       <br /> <br />
       <AddNewRecipeForm />
@@ -156,6 +167,8 @@ class _Recipes extends Component {
 }
 
 
+//====COMMENTED OUT BEFORE CHANGING DECREASE CHEF SCORE
+/*
 const mapStateToProps = ({ users, recipes }) => {
   return {
     users,
@@ -170,10 +183,10 @@ const mapToDispatch = {
 
 const Recipes = connect(mapStateToProps, mapToDispatch)(_Recipes)
 export default Recipes;
-
+*/
 
 //NEW STRUCTURE TO INCLUDE MULTIPLE METHODS - DELETE AND UPDATE
-/*
+
 const Recipes = connect(({recipes,users}) => {
   return {
     recipes,
@@ -184,12 +197,12 @@ const Recipes = connect(({recipes,users}) => {
     delete: (recipe) => dispatch(deleteRecipeThunk(recipe)),
     update: (user) => dispatch(decreaseUserScoreThunk(user))
   }
-})(_Recipes))
+})(_Recipes)
 
 
 export default Recipes;
 
-*/
+
 
 
 
