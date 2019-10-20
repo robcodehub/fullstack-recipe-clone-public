@@ -78,12 +78,16 @@ app.delete('/api/users/:id', (req, res, next) => {
 
 //ADD AN UPDATE ROUTE FOR USERS
 app.put('/api/users/:id', (req, res, next) => {
-  const updateInfo = req.body;
-  const userToUpdate = User.findByPk(req.params.id)
-  User.update(updateInfo, userToUpdate)
+  console.log("req.body in put======", req.body)
+  console.log("params in req=====", req.params)
+  const chefToUpdate = {id: req.body.id, username: req.body.username, email: req.body.email, chefscore: req.body.chefscore, imageURL: req.body.imageURL};
+  console.log("CHEF TO UPDATE=====", chefToUpdate)
+  //const userToUpdate = User.findByPk(req.params.id)
+  User.update(chefToUpdate, {where: {id: chefToUpdate.id }})
   .then(updatedUser => res.status(204).send(updatedUser))
   .catch(next)
 })
+
 
 //CHEF ROUTES - USERS WITH RECIPES
 

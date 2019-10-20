@@ -63,7 +63,10 @@ class _AddNewRecipeForm extends Component {
    createNewRecipe(ev) {
     ev.preventDefault()
       this.props.create(this.state);
+      console.log("THIS.PROPS.CREATE====", this.props.create)
       let userToUpdate = (this.props.users.filter(user => user.id === this.state.userId)[0]);
+      console.log("USER TO UPDATE====", userToUpdate)
+      console.log("THIS.PROPS.UPDATE====", this.props.update)
       this.props.update(userToUpdate)
   }
 
@@ -102,6 +105,60 @@ class _AddNewRecipeForm extends Component {
 
 }
 
+// THE BELOW WORKS TO ADD RECIPE BUT NOT TO UPDATE CHEF SCORE
+
+/*
+const mapStateToProps = ({ users, recipes }) => {
+  return {
+    users,
+    recipes
+  }
+}
+
+
+const mapToDispatch = {
+  create: addRecipeThunk
+}
+
+const AddNewRecipeForm = connect(mapStateToProps, mapToDispatch)(_AddNewRecipeForm)
+export default AddNewRecipeForm;
+
+*/
+
+//END OF WORKING CODE FOR ADDING A RECIPE BUT NOT UPDATING CHEF SCORE
+
+
+
+//THE BELOW IS AN ATTEMPT TO CREATE RECIPE AND UPDATE CHEF SCORE
+
+const AddNewRecipeForm = connect(({recipes,users}) => {
+  return {
+    recipes,
+    users
+  }
+}, (dispatch) => {
+  return {
+    create: (recipe) => dispatch(addRecipeThunk(recipe)),
+    update: (user) => dispatch(increaseUserScoreThunk(user))
+  }
+})(_AddNewRecipeForm)
+
+
+export default AddNewRecipeForm;
+
+
+//END OF CODE WITH ATTEMPT TO CREATE RECIPE AND UPDATE CHEF SCORE
+
+
+/*
+const mapToDispatch = dispatch => {
+    return ({
+    create: async (recipe) => dispatch(addRecipeThunk(recipe)),
+    update: async (user) => dispatch(increaseUserScoreThunk(user))
+    })
+}
+*/
+
 /*
 const AddNewRecipeForm = connect(({recipes,users}) => {
   return {
@@ -116,53 +173,7 @@ const AddNewRecipeForm = connect(({recipes,users}) => {
 //MAPSTATETOPROPS - NOT REQUIRED??? - ALREADY FACTORED INTO CONNECT
 
 
-const mapStateToProps = ({ users, recipes }) => {
-  return {
-    users,
-    recipes
-  }
-}
 
-/*
-const mapToDispatch = dispatch => {
-    return ({
-    create: async (recipe) => dispatch(addRecipeThunk(recipe)),
-    update: async (user) => dispatch(increaseUserScoreThunk(user))
-    })
-}
-*/
-
-//working code commented out to add another function to update user score
-
-const mapToDispatch = {
-  create: addRecipeThunk
-}
-
-
-/*
-const AddNewRecipeForm = connect(({recipes,users}) => {
-  return {
-    recipes,
-    users
-  }
-}, (dispatch) => {
-  return {
-    create: (recipe) => dispatch(addRecipeThunk(recipe)),
-    update: (user) => dispatch(updateUserThunk(user))
-    }
-})(_AddNewRecipeForm)
-
-
-export default AddNewRecipeForm;
-
-*/
-
-
-
-
-
-const AddNewRecipeForm = connect(mapStateToProps, mapToDispatch)(_AddNewRecipeForm)
-export default AddNewRecipeForm;
 
 
 
