@@ -4,9 +4,10 @@
   "description": "More practice with React, Redux, Express, and Sequelize!",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run webpack",
-    "webpack": "webpack",
-    "start:dev": "DATABASE_URL='postgres://localhost/recipedb' nodemon server/index.js --ignore dist/ --ignore src/ & npm run webpack --watch --mode=development"
+    "build": "webpack --mode=production",
+    "webpack": "webpack --watch --mode=development",
+    "start:dev": "DATABASE_URL='postgres://localhost/recipedb' nodemon server/index.js --ignore dist/ --ignore src/ & npm run webpack",
+    "start": "node server/index.js"
   },
   "babel": {
     "presets": [
