@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 
 //CONVERTED TO STARTED JS BELOW - NEED TO REFERENCE AND DISPLAY THIS WITHIN ANOTHER FUNCTION
 
+/*
 const TopChef = (recipes) => {
 
   const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
@@ -29,14 +30,13 @@ const TopChef = (recipes) => {
   return topChef;
 }
 
+*/
 //BELOW TO BE REMOVED AS IT DOESN'T NEED TO BE CONNECTED COMPONENT - REMOVE ONCE OTHER CODE ABOVE IS BEING USED
 
-/*
+
     const _TopChef = ({recipes, users}) => {
 
       const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
-
-      console.log("All CHEFS IN TOP CHEF FUNCTION ====", allChefs)
 
       let topChef = allChefs[0];
 
@@ -46,7 +46,6 @@ const TopChef = (recipes) => {
         }
       }
 
-      console.log("TOP CHEF =====", topChef);
 
 
       return (
@@ -56,7 +55,7 @@ const TopChef = (recipes) => {
       )
     }
 
-/*
+
     const TopChef = connect(({recipes, users}) => {
       return {
         recipes,
@@ -64,7 +63,7 @@ const TopChef = (recipes) => {
       }
     })(_TopChef)
 
-*/
+
 //==================CHANGES TO MAKE===============================================
 //SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
 //==================CHANGES TO MAKE===============================================
@@ -73,22 +72,12 @@ const TopChef = (recipes) => {
 
 
 /*
-
 const mapStateToProps = ({ users, recipes }) => {
   return {
     users,
     recipes
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setRecipesAction: () => {
-      dispatch(setRecipesThunk());
-    }
-  }
-}
-
 */
 
 //const TopChef = connect(mapStateToProps, mapDispatchToProps)(_TopChef)

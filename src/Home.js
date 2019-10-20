@@ -7,7 +7,7 @@ import HealthyRecipes from './HealthyRecipes';
 
 //////////////////////HOME CONNECTED COMPONENT////////////////////////////////////
 const _Home = ({users, recipes}) => {
-  console.log("RECIPES ON HOME PAGE SHOW...", recipes)
+
   let allRecipes = [];
   recipes
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import TopChef from './TopChefs';
 
   //////////////////////CHEFS CONNECTED COMPONENT////////////////////////////////////
-  
+
     const _Chefs = ({recipes, users}) => {
 
       const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
@@ -13,7 +13,6 @@ import TopChef from './TopChefs';
       return (
         <div>
           {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
-
         </div>
       )
     }
