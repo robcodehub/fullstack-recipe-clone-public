@@ -44,16 +44,11 @@ class _Recipes extends Component {
   }
 
   render() {
-    console.log("PROPS IN RENDER RECIPES======", this.props)
     const { deleteRecipe } = this;
     const { recipes } = this.props;
-    //const { recipes, users } = this.props; //UPDATE FOR DECREASE CHEF SCORE
 
     const chefsTest = recipes.filter(recipe => recipe.user)
 
-  console.log("RECIPES =======", recipes)
-  console.log("RECIPES WITH CHEF =======", chefsTest)
-  console.log("PROPS ======", this.props)
   return (
     <div>
       {recipes.map(recipe => <div key = {recipe.id} > <br />  <br />

@@ -50,9 +50,6 @@
 
     <script type='text/babel'>
 
-    //root = div with id of root
-    //const root = document.querySelector('#root')
-    //deconstructing from CDNs - less typing, less griping
     const { Component } = React;
     const { render } = ReactDOM;
     const { HashRouter, Link, Route} = ReactRouterDOM;
@@ -60,41 +57,6 @@
     const { thunkMiddleware, createThunkMiddleware } = ReduxThunk;
     const reduxThunk = ReduxThunk;
     const { connect, Provider } = ReactRedux;
-
-    //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-    ////////////////////CURRENT CODE BEFORE REFACTORING TO REDUX THUNKS///////////////////////////////////////
-        //REDUX - AXIOS - FETCH RECIPES / USERS AND ADD TO STORE
-
-        ////////////////////////////REDUX - DISPATCH FOR RECIPES//////////////////////////////////////////
-
-
-        /*
-        const fetchRecipes = async() => store.dispatch({type: SET_RECIPES, recipes: (await axios.get('/api/recipes')).data})
-
-        const addRecipeAxios = async(recipe) => store.dispatch({type: ADD_RECIPE, recipe: (await axios.post('/api/recipes', recipe)).data})
-
-        //REQUIRES RECIPE.ID TO PASSED IN FROM RECIPE AS ARGUMENT AND PARAMETER
-        //const deleteRecipeAxios = async() => store.dispatch({type: DELETE_RECIPE, recipe: (await axios.delete(`/api/recipes/${recipe.id}`, recipe))})
-
-       ////////////////////////////REDUX - DISPATCH FOR USERS//////////////////////////////////////////
-
-        const fetchUsers = async() => store.dispatch({type: SET_USERS, users: (await axios.get('/api/users')).data})
-
-        const addUserAxios = async() => store.dispatch({type: ADD_USER, USER: (await axios.post('/api/users', user)).data})
-
-        //REQUIRES USER.ID TO PASSED IN FROM USER AS ARGUMENT AND PARAMETER
-        //const deleteUserAxios = async() => store.dispatch({type: DELETE_USER, user: (await axios.delete(`/api/recipes/${user.id}`, user))})
-
-*/
-
-
-
-
-
-
-
 
 
     </script>

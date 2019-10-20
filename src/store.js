@@ -53,7 +53,6 @@ import thunk from 'redux-thunk'
     }
 
     const addRecipeThunk = (recipe) => {
-      console.log("ADD RECIPE THUNK RUNNING=====", recipe)
       return async (dispatch) => {
         const postRecipe = (await axios.post('/api/recipes', recipe)).data;
         dispatch(addRecipeAction(postRecipe))
@@ -61,22 +60,12 @@ import thunk from 'redux-thunk'
     }
 
     const deleteRecipeThunk = (recipeId) => {
-      console.log("RECIPE ID IN THUNK=====", recipeId)
       return async dispatch => {
         await axios.delete(`/api/recipes/${recipeId}`);
         dispatch(deleteRecipeAction(recipeId))
         }
     }
 
-    //TO COMPLETE AND CONVERT TO UPDATE
-    /*
-    const updateRecipeThunk = (recipe) => {
-      return async (dispatch) => {
-        const postRecipe = (await axios.post('/api/recipes', recipe)).data;
-        dispatch(addRecipeAction(postRecipe))
-        }
-    }
-*/
 
    ////////////////////////     USER - THUNKS    //////////////////////////////
 
@@ -104,11 +93,8 @@ import thunk from 'redux-thunk'
 
 
     const increaseUserScoreThunk = (user) => {
-      console.log("USER IN INCREASE USER SCORE THUNK======", user)
       const newChefScore = user.chefscore + 1;
       user.chefscore += 1;
-      console.log("USER IN INCREASE THUNK=====", user)
-      console.log("new chef score in thunk=====", newChefScore)
       return async dispatch => {
         const updateUser = (await axios.put(`/api/users/${user.id}`, user)).data;
         dispatch(updateUserAction(updateUser))
@@ -117,11 +103,8 @@ import thunk from 'redux-thunk'
 
 
     const decreaseUserScoreThunk = (user) => {
-      console.log("USER IN DECREASE USER SCORE THUNK======", user)
       const newChefScore = user.chefscore - 1;
       user.chefscore -= 1;
-      console.log("USER IN DECREASE THUNK=====", user)
-      console.log("new chef score in DECREASE thunk=====", newChefScore)
       return async dispatch => {
         const updateUser = (await axios.put(`/api/users/${user.id}`, user)).data;
         dispatch(updateUserAction(updateUser))
@@ -138,7 +121,6 @@ import thunk from 'redux-thunk'
 
     ////////////////////////   REDUX - USER REDUCER    ///////////////////////////
     const userReducer = (state = [], action) => {
-      //ADD IF ACTION.TYPE HERE
       if (action.type === SET_USERS) {
         state = action.users;
       } else if (action.type === ADD_USER) {
@@ -146,8 +128,6 @@ import thunk from 'redux-thunk'
       } else if (action.type === DELETE_USER) {
           return state.filter(user => user.id !== action.user)
       } else if (action.type === UPDATE_USER) {
-        console.log("ACTION IN UPDATE USER=====", action)
-          console.log("STATE IN UPDATE USER=====", state)
           return state;
       }
       return state;
@@ -155,7 +135,6 @@ import thunk from 'redux-thunk'
 
     ////////////////////////   REDUX - RECIPE REDUCER    ///////////////////////////
     const recipeReducer = (state = [], action) => {
-      //ADD IF ACTION.TYPE HERE
       if (action.type === SET_RECIPES) {
           state = action.recipes;
       } else if (action.type === ADD_RECIPE) {
@@ -178,18 +157,10 @@ import thunk from 'redux-thunk'
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////  REDUX - CREATE STORE  ////////////////////////////
     /////////////////////////////////////////////////////////////////////////////
-      //const store = createStore(reducer) //, applyMiddleware(thunkMiddleware));
+
 
       //REDUX STORE WITH MIDDLEWARE
       const store = createStore(reducer, applyMiddleware(thunk));
-
-      //const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk)));
-
-      /*
-      const middleware = applyMiddleware(thunk, logger());
-      const store = createStore(combineReducers({booleanReducer,searchItunesReducer}),middleware);
-      console.log(store.getState());
-      */
 
 
 
