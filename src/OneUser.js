@@ -9,15 +9,12 @@ import { connect } from 'react-redux';
 /////////////////////////SERVES UP ONE USER BASED ON USER ID///////////////////////////////
 
 const _OneUser = ({users, recipes, match}) => {
-  console.log("ONE USER =======", match)
+
 
   const singleUser = users.find(user => user.id === match.params.id)
 
   const singleUserRecipes = recipes.filter(recipe => recipe.userId === singleUser.id)
 
-  console.log("Single User Recipes =====", singleUserRecipes)
-
-  console.log("LENGTH CHECK=====", singleUserRecipes.length)
 
   return (
     <div>

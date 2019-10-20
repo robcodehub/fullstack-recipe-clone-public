@@ -36,8 +36,7 @@ class App extends Component {
   async componentDidMount() {
     store.dispatch(setRecipesThunk());
     store.dispatch(setUsersThunk());
-    //fetchRecipes();
-    //fetchUsers();
+
   }
 
   render() {
@@ -65,4 +64,3 @@ class App extends Component {
 render(<Provider store={store}><App /></Provider>, root)
 
 
-//render(<hr />, document.querySelector('#root'));
