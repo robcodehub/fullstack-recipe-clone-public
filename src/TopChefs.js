@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
       let topChef = allChefs[0];
 
       for (let i=0; i<allChefs.length; i++) {
-        if(allChefs[i].chefScore > topChef.chefScore) {
+        if(allChefs[i].chefscore > topChef.chefscore) {
           topChef = allChefs[i];
         }
       }
