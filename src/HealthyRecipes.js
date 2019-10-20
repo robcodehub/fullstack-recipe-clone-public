@@ -18,19 +18,6 @@ const _HealthyRecipes = ({recipes, users}) => {
   )
 }
 
-/*
-const HealthyRecipes = connect(({recipes, users}) => {
-  return {
-    recipes,
-    users
-  }
-})(_HealthyRecipes)
-
-*/
-//==================CHANGES TO MAKE===============================================
-//SHOULDN'T BE A CONNECTED COMPONENT - FINE FOR NOW BUT CONVERT TO JS FUNCTION LATER
-//==================CHANGES TO MAKE===============================================
-
 
 
 

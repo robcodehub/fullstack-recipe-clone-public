@@ -4,6 +4,12 @@ import { connect } from 'react-redux';
 
 import TopChef from './TopChefs';
 
+
+
+///////////////////////////////NOTES////////////////////////////////////////////////////
+//ERRORS WITH CHEF PAGE AFTER ADDING NEW USER - DIDN'T GET THE CHANCE TO FIX THIS///////////////
+///////////////////////////////////////////////////////////////////////////////////
+
   //////////////////////CHEFS CONNECTED COMPONENT////////////////////////////////////
 
     const _Chefs = ({recipes, users}) => {
@@ -13,6 +19,7 @@ import TopChef from './TopChefs';
       return (
         <div>
           {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
+          <TopChef />
         </div>
       )
     }

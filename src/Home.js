@@ -9,7 +9,6 @@ import TopChef from './TopChefs';
 //////////////////////HOME CONNECTED COMPONENT////////////////////////////////////
 const _Home = ({users, recipes}) => {
 
-  let allRecipes = [];
   recipes
 
 
@@ -18,7 +17,6 @@ return (
         Welcome! There are {users.length} users and {recipes.length} recipes!
 
         <HealthyRecipes />
-        <Link to='/chefs'> Chefs </Link>
       </div>
     )
 }

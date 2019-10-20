@@ -12,7 +12,7 @@ const { models } = require('./db')
 const { Recipe, User } = models;
 
 
-app.use(express.json()); //middleware - required?
+app.use(express.json());
 
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
@@ -33,7 +33,7 @@ app.get('/api/recipes', async (req, res, next) => {
   .catch(next);
 });
 
-//ADD A POST ROUTE FOR RECIPES
+//POST ROUTE FOR RECIPES
 app.post('/api/recipes', (req, res, next) => {
   Recipe.create(req.body)
   .then(newRecipe => res.status(201).send(newRecipe))
@@ -41,7 +41,7 @@ app.post('/api/recipes', (req, res, next) => {
 });
 
 
-//ADD A DELETE ROUTE FOR RECIPES
+//DELETE ROUTE FOR RECIPES
 app.delete('/api/recipes/:id', (req, res, next) => {
   Recipe.findByPk(req.params.id)
   .then(currentRecipe => currentRecipe.destroy())
@@ -80,11 +80,9 @@ app.delete('/api/users/:id', (req, res, next) => {
 
 //ADD AN UPDATE ROUTE FOR USERS
 app.put('/api/users/:id', (req, res, next) => {
-  console.log("req.body in put======", req.body)
-  console.log("params in req=====", req.params)
+
   const chefToUpdate = {id: req.body.id, username: req.body.username, email: req.body.email, chefscore: req.body.chefscore, imageURL: req.body.imageURL};
-  console.log("CHEF TO UPDATE=====", chefToUpdate)
-  //const userToUpdate = User.findByPk(req.params.id)
+
   User.update(chefToUpdate, {where: {id: chefToUpdate.id }})
   .then(updatedUser => res.status(204).send(updatedUser))
   .catch(next)
@@ -93,14 +91,14 @@ app.put('/api/users/:id', (req, res, next) => {
 
 //CHEF ROUTES - USERS WITH RECIPES
 
-//REPLACE THE BELOW WITH A HASH ROUTE IN REACT
+//GETTING AN ERROR WITH CHEFS - WAS CONSIDERING TO
+//CHANGE CHEFS IN REACT TO AN API AND RENDER ON FRONT END FROM API
+
 app.get('/api/chefs', (req, res, next) => {
   Recipe.findAll({include: [User]})
   .then(recipes => res.send(recipes))
   .catch(next);
 });
-
-
 
 
 
@@ -114,4 +112,4 @@ app.listen(port, ()=> console.log(`listening on port ${port}`))
 });
 
 
-module.exports = app; //required - when moving to webpack?
+module.exports = app; 

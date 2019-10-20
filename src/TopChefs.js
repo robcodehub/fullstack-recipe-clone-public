@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 
 
+
 ////////////////////////////TOP CHEF CONNECTED COMPONENT////////////////////////////////////
 /////////////////////////RETURNS THE CHEF WITH THE HIGHEST RATING///////////////////////////
+
 
     const _TopChef = ({recipes, users}) => {
 

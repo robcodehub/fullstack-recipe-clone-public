@@ -14,7 +14,7 @@ Deploying your application is a way to determine whether it will work on an envi
 
 
 ## DEPLOYED APP
-https://rw-recipe.herokuapp.com/#/
+https://rw-recipe.herokuapp.com/
 
 ## Requirements
 
@@ -67,7 +67,8 @@ nothing
 
 
 #### Frontend
-NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN TIER 2 AND WILL COME BACK TO THIS SECTION
+NOTE: I didn't complete these as I kept getting errors. I came back to this section at the end after completing the other tiers but didn't have the time to fix these.
+
 - [ ] create client side methods which calculate the following (you can put this code in a file called mapppers.js)
   - [x] `topChef` when given a list of recipes and users returns the user who is the top chef (the one with the highest rating)
   - [x] `healthyRecipes` when given a list of recipes calculates which recipes have healthScores between 8 and 10
@@ -232,7 +233,7 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 - [ ] Try researching some UI frameworks (MaterialUI, Bootstrap, Semantic UI, etc.) and incorporating one into your app to add some great styles
    - [ ] Can you display forms as modals?
    - [ ] Can you show toaster messages around form submissions?
-   - [ ] IN PROGRESS - Can a user easily and intuitively navigate around your app?
+   - [ ] Can a user easily and intuitively navigate around your app?
 
 </details>
 
