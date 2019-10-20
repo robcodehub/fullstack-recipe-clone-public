@@ -56,7 +56,6 @@ app.delete('/api/recipes/:id', (req, res, next) => {
 
 //////////////////EXPRESS USER ROUTES//////////////////////
 app.get('/api/users', (req, res, next) => {
-  console.log("THIS CODE RUNS FOR USERS.....")
   User.findAll()
   .then(users => res.send(users))
   .catch(next)
@@ -112,4 +111,4 @@ app.listen(port, ()=> console.log(`listening on port ${port}`))
 });
 
 
-module.exports = app; 
+module.exports = app;
