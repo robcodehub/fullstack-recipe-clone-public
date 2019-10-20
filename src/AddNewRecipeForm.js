@@ -72,8 +72,8 @@ class _AddNewRecipeForm extends Component {
     const healthScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
     return (
       <div>
-        <h1> Add New Recipe</h1>
         <form id="new-recipe-form" onSubmit={createNewRecipe}>
+        <h2> Add New Recipe</h2>
           Chef Name: <select name="userId" onChange={onChangeSetState}> {users.map(user => <option key={user.id} value={user.id}> {user.username} </option>)} </select>
           Recipe Name: <input type="text" name="name" onChange={onChangeSetState}/>
           Cuisine: <select name="cuisine" onChange={onChangeSetState}> {setCuisines.map(cuisine => <option key={cuisine} value={cuisine}>{cuisine}</option>)} </select>

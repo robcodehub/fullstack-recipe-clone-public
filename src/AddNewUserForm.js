@@ -54,8 +54,9 @@ class _AddNewUserForm extends Component {
     const chefScores = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
     return (
       <div>
-        <h1> Add New User</h1>
+
         <form id="new-user-form" onSubmit={createNewUser}>
+        <h2> Add New User</h2>
           User Name: <input type="text" name="username" onChange={onChangeSetState}/>
           Email: <input name="email" type="text" onChange={onChangeSetState}/>
           Chef Score: <select name="chefscore" onChange={onChangeSetState}> {chefScores.map(score => <option key={score} value={score}>{score}</option>)} </select>
