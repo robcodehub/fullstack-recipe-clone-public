@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 const _HealthyRecipes = ({recipes, users}) => {
   const healthyFood = recipes.filter(recipe => recipe.healthScore >= 8)
-  console.log("HEALTHY FOOD====", healthyFood)
   return (
     <div>
       <br />
