@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import HealthyRecipes from './HealthyRecipes';
+import TopChef from './TopChefs';
 
 
 //////////////////////HOME CONNECTED COMPONENT////////////////////////////////////
