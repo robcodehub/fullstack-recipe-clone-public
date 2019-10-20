@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { addRecipeThunk } from './store'
+import { addRecipeThunk, increaseUserScoreThunk } from './store'
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -63,8 +63,8 @@ class _AddNewRecipeForm extends Component {
    createNewRecipe(ev) {
     ev.preventDefault()
       this.props.create(this.state);
-      console.log("THIS.PROP.USER IN CREATE RECIPE====", this.props.users.filter(user => user.id === this.state.userId)[0])
-      //this.props.update(this.props.users)
+      let userToUpdate = (this.props.users.filter(user => user.id === this.state.userId)[0]);
+      this.props.update(userToUpdate)
   }
 
 
@@ -123,10 +123,42 @@ const mapStateToProps = ({ users, recipes }) => {
   }
 }
 
-const mapToDispatch = {
-    create: addRecipeThunk //,
-    //update: increaseUserScoreThunk
+/*
+const mapToDispatch = dispatch => {
+    return ({
+    create: async (recipe) => dispatch(addRecipeThunk(recipe)),
+    update: async (user) => dispatch(increaseUserScoreThunk(user))
+    })
 }
+*/
+
+//working code commented out to add another function to update user score
+
+const mapToDispatch = {
+  create: addRecipeThunk
+}
+
+
+/*
+const AddNewRecipeForm = connect(({recipes,users}) => {
+  return {
+    recipes,
+    users
+  }
+}, (dispatch) => {
+  return {
+    create: (recipe) => dispatch(addRecipeThunk(recipe)),
+    update: (user) => dispatch(updateUserThunk(user))
+    }
+})(_AddNewRecipeForm)
+
+
+export default AddNewRecipeForm;
+
+*/
+
+
+
 
 
 const AddNewRecipeForm = connect(mapStateToProps, mapToDispatch)(_AddNewRecipeForm)

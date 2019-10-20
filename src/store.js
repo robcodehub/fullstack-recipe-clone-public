@@ -53,6 +53,7 @@ import thunk from 'redux-thunk'
     }
 
     const addRecipeThunk = (recipe) => {
+      console.log("ADD RECIPE THUNK RUNNING=====", recipe)
       return async (dispatch) => {
         const postRecipe = (await axios.post('/api/recipes', recipe)).data;
         dispatch(addRecipeAction(postRecipe))

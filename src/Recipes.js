@@ -12,6 +12,8 @@ import AddNewRecipeForm from './AddNewRecipeForm';
 import {deleteRecipeAction} from './store'
 import { deleteRecipeThunk } from './store'
 
+import { increaseUserScoreThunk } from './store'
+
 //////////////////////RECIPE CONNECTED COMPONENT////////////////////////////////////
 
 
