@@ -106,7 +106,7 @@ import thunk from 'redux-thunk'
     const increaseUserScoreThunk = (user) => {
       console.log("USER IN INCREASE USER SCORE THUNK======", user)
       const newChefScore = user.chefscore + 1;
-      user.chefScore += 1;
+      user.chefscore += 1;
       console.log("USER IN INCREASE THUNK=====", user)
       console.log("new chef score in thunk=====", newChefScore)
       return async dispatch => {
@@ -141,7 +141,9 @@ import thunk from 'redux-thunk'
       } else if (action.type === DELETE_USER) {
           return state.filter(user => user.id !== action.user)
       } else if (action.type === UPDATE_USER) {
-          return state //NEED TO UDPATE FOR UPDATE USER
+        console.log("ACTION IN UPDATE USER=====", action)
+          console.log("STATE IN UPDATE USER=====", state)
+          return state;
       }
       return state;
     }
