@@ -12,6 +12,10 @@ Make a website for viewing, creating, and saving recipes. Let's get cooking!
 ## Deploying Your Application
 Deploying your application is a way to determine whether it will work on an environment other than your own. It's in your best interest to deploy your application to ensure that someone else cloning your repo, will be able to run it. Once you get your application working locally you should deploy it to heroku. As you commit your changes, you should push those changes to both your github repo and to heroku.
 
+
+## DEPLOYED APP
+https://rw-recipe.herokuapp.com/#/
+
 ## Requirements
 
 ### Tier 1
