@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 //CONVERTED TO STARTED JS BELOW - NEED TO REFERENCE AND DISPLAY THIS WITHIN ANOTHER FUNCTION
 
-const calcTopChef = (recipes) => {
+const TopChef = (recipes) => {
 
   const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
 
@@ -30,6 +30,8 @@ const calcTopChef = (recipes) => {
 }
 
 //BELOW TO BE REMOVED AS IT DOESN'T NEED TO BE CONNECTED COMPONENT - REMOVE ONCE OTHER CODE ABOVE IS BEING USED
+
+/*
     const _TopChef = ({recipes, users}) => {
 
       const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
@@ -70,7 +72,7 @@ const calcTopChef = (recipes) => {
 
 
 
-
+/*
 
 const mapStateToProps = ({ users, recipes }) => {
   return {
@@ -87,5 +89,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const TopChef = connect(mapStateToProps, mapDispatchToProps)(_TopChef)
+*/
+
+//const TopChef = connect(mapStateToProps, mapDispatchToProps)(_TopChef)
 export default TopChef;
+

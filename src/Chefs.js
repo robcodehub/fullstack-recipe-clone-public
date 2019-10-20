@@ -10,10 +10,13 @@ import TopChef from './TopChefs';
 
       const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
 
-      console.log("All CHEFS====", allChefs)
+      const newListOfChefs = [];
 
+      
+      console.log("NEW LIST OF CHEFS====", newListOfChefs)
 
-
+      const setOfChefs = [...new Set(allChefs)]
+      console.log("SET OF CHEFS=====", setOfChefs)
       /*
       const reducedChefs = allChefs.reduce((all, chef) => {
         if (!all[chef.id]) {
@@ -32,8 +35,8 @@ import TopChef from './TopChefs';
 
       return (
         <div>
-          {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
-          <TopChef />
+          {setOfChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
+
         </div>
       )
     }
@@ -54,7 +57,7 @@ const mapStateToProps = ({ users, recipes }) => {
     recipes
   }
 }
-
+/*
 const mapDispatchToProps = (dispatch) => {
   return {
     setRecipesAction: () => {
@@ -62,6 +65,7 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
+*/
 
-const Chefs = connect(mapStateToProps, mapDispatchToProps)(_Chefs)
+const Chefs = connect(mapStateToProps)(_Chefs)
 export default Chefs;

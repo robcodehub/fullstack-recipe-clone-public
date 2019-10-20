@@ -34,6 +34,7 @@ class _AddNewUserForm extends Component {
 
    createNewUser(ev) {
     ev.preventDefault()
+    console.log("STATE IN CREATE NEW USER====", this.state)
       this.props.create(this.state);
   }
 
@@ -47,7 +48,7 @@ class _AddNewUserForm extends Component {
     return (
       <div>
         <form id="new-user-form" onSubmit={createNewUser}>
-          User Name: <input type="text" name="name" onChange={onChangeSetState}/>
+          User Name: <input type="text" name="username" onChange={onChangeSetState}/>
           Email: <input name="email" type="text" onChange={onChangeSetState}/>
           Chef Score: <select name="chefscore" onChange={onChangeSetState}> {chefScores.map(score => <option key={score} value={score}>{score}</option>)} </select>
           Link to Image (Image URL): <input type="text" name="imageURL" onChange={onChangeSetState}/>

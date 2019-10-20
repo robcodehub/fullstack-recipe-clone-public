@@ -11,10 +11,7 @@ import { connect } from 'react-redux';
 //==================CHANGES TO MAKE===============================================
 
 //CONVERTED TO STARTED JS BELOW - NEED TO REFERENCE AND DISPLAY THIS WITHIN ANOTHER FUNCTION
-const CalcHealthyRecipes = (recipes) => {
-  const healthyFood = recipes.filter(recipe => recipe.healthScore >= 8)
-  return healthyFood
-}
+
 
 //BELOW TO BE REMOVED AS IT DOESN'T NEED TO BE CONNECTED COMPONENT - REMOVE ONCE OTHER CODE ABOVE IS BEING USED
 

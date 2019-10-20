@@ -130,7 +130,7 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
 #### Backend
 
-- [ ] IN PROGRESS - Write a route to remove a recipe (based on its id, the associated user should get a decrease in their chefScore)
+- [x] Write a route to remove a recipe (based on its id, the associated user should get a decrease in their chefScore)
 - [x] Write a route to remove a user (based on their id)
 
 #### Frontend
