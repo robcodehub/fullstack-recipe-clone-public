@@ -8,15 +8,11 @@ import TopChef from './TopChefs';
 
     const _Chefs = ({recipes, users}) => {
 
-      const allChefs = (recipes.filter(recipe => recipe.userId !== null))
-
-      console.log("ALL CHEFS=====", allChefs)
-      //map(recipe => recipe.user)
+      const allChefs = (recipes.filter(recipe => recipe.userId !== null)).map(recipe => recipe.user)
 
       return (
         <div>
           {allChefs.map(chef => <div key={chef.id}><p>Chef Name:</p> {chef.username} </div>)}
-          <TopChef />
         </div>
       )
     }
