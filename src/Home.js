@@ -18,7 +18,7 @@ return (
         Welcome! There are {users.length} users and {recipes.length} recipes!
 
         <HealthyRecipes />
-        <TopChef />
+        <Link to='/chefs'> Chefs </Link>
       </div>
     )
 }
