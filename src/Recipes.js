@@ -106,12 +106,25 @@ class _Recipes extends Component {
    async deleteRecipe(recipeId) {
      console.log("RECIPE IN DELETE RECIPE======", recipeId)
     await this.props.delete(recipeId)
+
+    /* //UPDATE FOR DECREASE CHEF SCORE
+    async deleteRecipe(recipe, user) {
+     console.log("RECIPE IN DELETE RECIPE======", recipe)
+    await this.props.delete(recipe.id)
+
+    let userToUpdate = (this.props.users.filter(user => user.id === recipe.chefId);
+    console.log("USER TO UPDATE====", userToUpdate)
+    console.log("THIS.PROPS.UPDATE====", this.props.update)
+    this.props.update(userToUpdate)
+    */
+
   }
 
   render() {
     console.log("PROPS IN RENDER RECIPES======", this.props)
     const { deleteRecipe } = this;
     const { recipes } = this.props;
+    //const { recipes, users } = this.props; //UPDATE FOR DECREASE CHEF SCORE
 
     const chefsTest = recipes.filter(recipe => recipe.user)
 
@@ -119,7 +132,7 @@ class _Recipes extends Component {
   console.log("RECIPES WITH CHEF =======", chefsTest)
   console.log("PROPS ======", this.props)
   return (
-    <div>
+    <div> 
       {recipes.map(recipe => <div key = {recipe.id} > <br />  <br />
       Name: {recipe.name} <br />
       Cuisine: {recipe.cuisine} <br />
@@ -129,13 +142,15 @@ class _Recipes extends Component {
       Image: <br /> <img height="250" width="250" src={recipe.imageURL} /> <br />
       <Link to={`/recipes/${recipe.id}`}>
       Link to Recipe</Link> <br /> <br />
-      <button onClick={ () => deleteRecipe(recipe.id) } className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>)}
+      <button onClick={ () => deleteRecipe(recipe.id) } className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>)
+    }
       <br /> <br />
       <AddNewRecipeForm />
     </div>
   )
 }
 
+//<button onClick={ () => deleteRecipe(recipe, user) } className="delete-recipe"> X </button> Delete Recipe Above <br /> </div>) //UPDATE FOR DECREASE CHEF SCORE
 
 
 }
@@ -157,7 +172,24 @@ const Recipes = connect(mapStateToProps, mapToDispatch)(_Recipes)
 export default Recipes;
 
 
+//NEW STRUCTURE TO INCLUDE MULTIPLE METHODS - DELETE AND UPDATE
+/*
+const Recipes = connect(({recipes,users}) => {
+  return {
+    recipes,
+    users
+  }
+}, (dispatch) => {
+  return {
+    delete: (recipe) => dispatch(deleteRecipeThunk(recipe)),
+    update: (user) => dispatch(decreaseUserScoreThunk(user))
+  }
+})(_Recipes))
 
+
+export default Recipes;
+
+*/
 
 
 

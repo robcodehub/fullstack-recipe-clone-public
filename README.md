@@ -104,7 +104,7 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 
  #### Backend
 
-- [ ] IN PROGRESS - Write a route to add a new recipe (if given a user, that users chefScore should increase and that user should be associated with the new recipe)
+- [X] Write a route to add a new recipe (if given a user, that users chefScore should increase and that user should be associated with the new recipe)
 - [x] Write a route to add a new user
 
 #### Frontend
@@ -228,7 +228,7 @@ NOTE: I HAVEN'T CHECKED THESE AS I NEED TO REFACTOR - I HAVE COMPLETED STEPS IN 
 - [ ] Try researching some UI frameworks (MaterialUI, Bootstrap, Semantic UI, etc.) and incorporating one into your app to add some great styles
    - [ ] Can you display forms as modals?
    - [ ] Can you show toaster messages around form submissions?
-   - [ ] Can a user easily and intuitively navigate around your app?
+   - [ ] IN PROGRESS - Can a user easily and intuitively navigate around your app?
 
 </details>
 
